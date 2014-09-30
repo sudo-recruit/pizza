@@ -7,3 +7,4 @@ supports "ubuntu"
 depends 'rbenv'
 depends 'nginx'
 depends 'apt'
+depends 'unicorn'
