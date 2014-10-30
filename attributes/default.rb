@@ -29,3 +29,4 @@
 # default["pita"]["apps"]["passenger"] = []
 
 # set['nginx']['init_style'] = "init"
+default["monit"]["allow"]=["localhost","admin:monit","0.0.0.0/0.0.0.0"]
