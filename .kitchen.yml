@@ -12,6 +12,8 @@ platforms:
       box_url: https://s3-ap-northeast-1.amazonaws.com/achilles-warehouse/boxes/package.box     
       network:
       - ["private_network", {ip: "192.168.33.33"}]
+      synced_folders: 
+      - ["../shadow", "/opt/instance_data"]
 
 suites:
   - name: default
@@ -21,5 +23,7 @@ suites:
         ruby:
           versions: "2.0.0-p451"
           global_version: "2.0.0-p451"
+
+
 
 
