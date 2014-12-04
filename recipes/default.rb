@@ -1,6 +1,7 @@
 ::Chef::Recipe.send(:include, Pita::Helpers)
 
 include_recipe "apt"
+include_recipe "yum"
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
@@ -29,6 +30,15 @@ template "/etc/monit/conf.d/nginx.conf" do
 	source "monit_nginx.conf.erb"
 	notifies :restart, "service[monit]",:delayed
 end
+
+template "/etc/security/limits.conf" do
+	owner "root"
+	group "root"
+	mode "0700"
+	source "limits.conf.erb"
+end
+
+include_recipe "td-agent::default"
 
 
 # Array(node["rackbox"]["apps"]["unicorn"]).each_with_index do |app, index|

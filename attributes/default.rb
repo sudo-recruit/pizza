@@ -30,3 +30,5 @@
 
 # set['nginx']['init_style'] = "init"
 default["monit"]["allow"]=["localhost","admin:monit","0.0.0.0/0.0.0.0"]
+default["td_agent"]["api_key"]="foo_bar"
+default["td_agent"]["version"] = '2'
