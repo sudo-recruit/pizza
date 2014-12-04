@@ -7,5 +7,7 @@ supports "ubuntu"
 depends 'rbenv'
 depends 'nginx'
 depends 'apt'
+depends 'yum'
 depends 'unicorn'
 depends 'monit'
+depends 'td-agent'
