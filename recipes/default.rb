@@ -5,11 +5,11 @@ include_recipe "yum"
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
-rbenv_ruby "2.0.0-p576" do
-	global(true)
+rbenv_ruby "2.2.0" do
+  global(true)
 end
 rbenv_gem "bundler" do
-	ruby_version "2.0.0-p576"
+	ruby_version "2.2.0"
 end
 
 include_recipe "nginx::source"
@@ -24,32 +24,21 @@ package 'vim'
 include_recipe "monit::default"
 
 template "/etc/monit/conf.d/nginx.conf" do
-	owner "root"
-	group "root"
-	mode "0700"
-	source "monit_nginx.conf.erb"
-	notifies :restart, "service[monit]",:delayed
+  owner "root"
+  group "root"
+  mode "0700"
+  source "monit_nginx.conf.erb"
+  notifies :restart, "service[monit]",:delayed
 end
 
 template "/etc/security/limits.conf" do
-	owner "root"
-	group "root"
-	mode "0700"
-	source "limits.conf.erb"
+  owner "root"
+  group "root"
+  mode "0700"
+  source "limits.conf.erb"
 end
 
-include_recipe "td-agent::default"
-
-
-# Array(node["rackbox"]["apps"]["unicorn"]).each_with_index do |app, index|
-#   default_port = node["rackbox"]["upstream_start_port"]["unicorn"].to_i + index
-#   app_dir      = ::File.join(node["appbox"]["apps_dir"], app["appname"], 'current')
-
-#   setup_nginx_site(app, app_dir, default_port)
-#   setup_unicorn_config(app, app_dir, default_port)
-#   setup_unicorn_runit(app, app_dir)
-# end
-
+# include_recipe "td-agent::default"
 # sudo apt-get install imagemagick
 
 # sudo apt-get install libmagickwand-dev
