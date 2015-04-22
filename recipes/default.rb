@@ -40,7 +40,7 @@ template "/etc/security/limits.conf" do
   source "limits.conf.erb"
 end
 
-# include_recipe "td-agent::default"
+include_recipe "td-agent::default"
 # sudo apt-get install imagemagick
 
 # sudo apt-get install libmagickwand-dev
