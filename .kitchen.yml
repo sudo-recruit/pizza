@@ -1,17 +1,16 @@
 ---
 driver:
-  name: vagrant
+  name: ssh
+  port: 22
+  username: ubuntu
+
 
 provisioner:
   name: chef_solo
 
 platforms:
   - name: ubuntu-14.04
-    driver:
-      network:
-      - ["private_network", {ip: "192.168.33.33"}]
-      synced_folders: 
-      - ["../shadow", "/opt/instance_data"]
+
 
 suites:
   - name: default
