@@ -41,8 +41,3 @@ template "/etc/security/limits.conf" do
 end
 
 include_recipe "td-agent::default"
-# sudo apt-get install imagemagick
-
-# sudo apt-get install libmagickwand-dev
-
-# sudo apt-get install libmysqlclient-dev
