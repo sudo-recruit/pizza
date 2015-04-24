@@ -1,8 +1,6 @@
 ---
 driver:
   name: ssh
-  port: 22
-  username: ubuntu
 
 
 provisioner:
