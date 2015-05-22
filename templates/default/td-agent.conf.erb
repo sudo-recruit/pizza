@@ -22,20 +22,53 @@
   type stdout
 </match>
 
+
 <match rails.access>
+ type copy
+ <store>
   type elasticsearch
   logstash_format true
   host <%= node['pita']['elasticsearch_host'] %>
   index_name rails
   type_name rails.access
+</store>
+<store>
+  type s3
+  s3_bucket sudo-log
+  s3_region ap-northeast-1
+  path rails-logs/
+  buffer_path /var/log/td-agent/s3-buffer/rails
+
+  time_slice_format %Y%m%d%H
+  time_slice_wait 10m
+  utc
+
+  buffer_chunk_limit 256m
+</store>
 </match>
 
 <match nginx.access>
+ type copy
+ <store>
   type elasticsearch
   logstash_format true
   host  <%= node['pita']['elasticsearch_host'] %>
   index_name nginx
   type_name nginx.access
+  </store>
+  <store>
+    type s3
+    s3_bucket sudo-log
+    s3_region ap-northeast-1
+    path nginx-logs/
+    buffer_path /var/log/td-agent/s3-buffer/nginx
+
+    time_slice_format %Y%m%d%H
+    time_slice_wait 10m
+    utc
+
+    buffer_chunk_limit 256m
+  </store>
 </match>
 ####
 ## Source descriptions:
