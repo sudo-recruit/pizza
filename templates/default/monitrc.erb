@@ -1,0 +1,17 @@
+set daemon 60
+  with start delay 120
+
+set logfile syslog facility log_daemon
+
+set eventqueue
+  basedir /var/monit  # set the base directory where events will be stored
+  slots 1000
+
+
+set httpd port  3737
+
+  allow localhost
+  allow  <%= node['pita']['monit_user'] %>: <%= node['pita']['monit_password'] %>
+
+
+include /etc/monit/conf.d/*.conf
