@@ -1,3 +1,5 @@
+package 'libcurl4-openssl-dev'
+
 template "/etc/security/limits.conf" do
   owner "root"
   group "root"
