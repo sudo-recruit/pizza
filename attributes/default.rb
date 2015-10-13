@@ -8,11 +8,8 @@ default['nginx']['source']['modules']  = %w(
   nginx::http_stub_status_module
 )
 
-
 default["monit"]["allow"]=["localhost","admin:monit","0.0.0.0/0.0.0.0"]
 default["td_agent"]["api_key"]="foo_bar"
 default["td_agent"]["version"] = '2'
-# default["td_agent"]["plugins"] = ['elasticsearch','s3']
-
-# default["pita"]["deploy_to"]="/home/ubuntu/apps/WeStudent_JB_staging/"
+default["td_agent"]["plugins"] = ['elasticsearch','s3']
 
