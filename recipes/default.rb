@@ -15,7 +15,7 @@ package 'libmysqlclient-dev'
 package 'curl'
 package 'git'
 package 'vim'
-package 'redis-server'
+# package 'redis-server'
 include_recipe "unattended_upgrades"
 
 
