@@ -13,3 +13,12 @@ default["td_agent"]["api_key"]="foo_bar"
 default["td_agent"]["version"] = '2'
 default["td_agent"]["plugins"] = ['elasticsearch','s3']
 
+default['pita']['deploy_to']='/home/ubuntu/apps'
+default['pita']['rails_app_name']='foobar'
+default['pita']['user_name']='ubuntu'
+default['pita']['monit_port']='3737'
+default['pita']['monit_user']='admin'
+default['pita']['monit_password']='monit3345678'
+
+
+
