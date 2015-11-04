@@ -19,6 +19,8 @@ default['pita']['user_name']='ubuntu'
 default['pita']['monit_port']='3737'
 default['pita']['monit_user']='admin'
 default['pita']['monit_password']='monit3345678'
+default['apt']['unattended_upgrades']['enable']=true
+
 
 
 
