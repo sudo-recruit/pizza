@@ -34,8 +34,8 @@
 </store>
 <store>
   type s3
-  s3_bucket sudo-log
-  s3_region ap-northeast-1
+  s3_bucket <%= node['pita']['s3_bucket'] %>
+  s3_region <%= node['pita']['s3_region'] %>
   path rails-logs/
   buffer_path /var/log/td-agent/s3-buffer/rails
 
@@ -58,8 +58,8 @@
   </store>
   <store>
     type s3
-    s3_bucket sudo-log
-    s3_region ap-northeast-1
+    s3_bucket <%= node['pita']['s3_bucket'] %>
+    s3_region <%= node['pita']['s3_region'] %>
     path nginx-logs/
     buffer_path /var/log/td-agent/s3-buffer/nginx
 

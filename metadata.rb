@@ -1,5 +1,5 @@
 name "pita"
-version "0.1.1"
+version "0.1.2"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
 supports "ubuntu"
@@ -14,3 +14,6 @@ depends 'td-agent'
 depends 'nodejs'
 depends 'datadog'
 depends 'unattended_upgrades'
+depends 'sudo_consul', '~> 0.0.3'
+depends 'simple_consul_alerts'
+depends 'sudo_consul_service'

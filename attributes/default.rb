@@ -1,4 +1,3 @@
-
 default['nginx']['source']['version']='1.6.2'
 default['nginx']['source']['url']="http://nginx.org/download/nginx-1.6.2.tar.gz"
 default['nginx']['source']['checksum']="b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
@@ -20,7 +19,7 @@ default['pita']['monit_port']='3737'
 default['pita']['monit_user']='admin'
 default['pita']['monit_password']='monit3345678'
 default['apt']['unattended_upgrades']['enable']=true
-
+default['pita']['consul']['node_name']='node1'
 
 
 
