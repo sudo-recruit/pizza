@@ -1,0 +1,46 @@
+####
+## Output descriptions:
+##
+
+# Treasure Data (http://www.treasure-data.com/) provides cloud based data
+# analytics platform, which easily stores and processes data from td-agent.
+# FREE plan is also provided.
+# @see http://docs.fluentd.org/articles/http-to-td
+#
+
+<match nginx.access>
+ type copy
+ <store>
+  type elasticsearch
+  logstash_format true
+  host  <%= node['pita']['elasticsearch_host'] %>
+  index_name nginx
+  type_name nginx.access
+  </store>
+  <store>
+    type s3
+    s3_bucket <%= node['pita']['s3_bucket'] %>
+    s3_region <%= node['pita']['s3_region'] %>
+    path nginx-logs/
+    buffer_path /var/log/td-agent/s3-buffer/nginx
+
+    time_slice_format %Y%m%d%H
+    time_slice_wait 10m
+    utc
+
+    buffer_chunk_limit 256m
+  </store>
+</match>
+
+####
+## Source descriptions:
+##
+
+ <source>
+  type tail
+  path /var/log/nginx/access.log
+  pos_file /var/log/td-agent/nginx.access.log.pos
+  tag nginx.access #fluentd tag!
+  format nginx # Do you have a custom format? You can write your own regex.
+</source>
+

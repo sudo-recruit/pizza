@@ -1,0 +1,46 @@
+####
+## Output descriptions:
+##
+
+# Treasure Data (http://www.treasure-data.com/) provides cloud based data
+# analytics platform, which easily stores and processes data from td-agent.
+# FREE plan is also provided.
+# @see http://docs.fluentd.org/articles/http-to-td
+#
+
+<match rails.access>
+ type copy
+ <store>
+  type elasticsearch
+  logstash_format true
+  host <%= node['pita']['elasticsearch_host'] %>
+  index_name rails
+  type_name rails.access
+</store>
+<store>
+  type s3
+  s3_bucket <%= node['pita']['s3_bucket'] %>
+  s3_region <%= node['pita']['s3_region'] %>
+  path rails-logs/
+  buffer_path /var/log/td-agent/s3-buffer/rails
+
+  time_slice_format %Y%m%d%H
+  time_slice_wait 10m
+  utc
+
+  buffer_chunk_limit 256m
+</store>
+</match>
+
+
+####
+## Source descriptions:
+##
+<source>
+  type tail
+  path /home/<%= node['pita']['user_name'] %>/apps/<%= node['pita']['rails_app_name'] %>/shared/log/production.log
+  pos_file /var/log/td-agent/rails.access.log.pos
+  tag rails.access
+  format json
+</source>
+

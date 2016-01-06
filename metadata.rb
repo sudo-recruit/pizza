@@ -1,5 +1,5 @@
 name "pita"
-version "0.1.4"
+version "0.1.5"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
 supports "ubuntu"

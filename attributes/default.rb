@@ -11,6 +11,7 @@ default["monit"]["allow"]=["localhost","admin:monit","0.0.0.0/0.0.0.0"]
 default["td_agent"]["api_key"]="foo_bar"
 default["td_agent"]["version"] = '2'
 default["td_agent"]["plugins"] = ['elasticsearch','s3']
+default[:td_agent][:includes] = true
 
 default['pita']['deploy_to']='/home/ubuntu/apps'
 default['pita']['rails_app_name']='foobar'
@@ -21,5 +22,4 @@ default['pita']['monit_password']='monit3345678'
 default['apt']['unattended_upgrades']['enable']=true
 default['pita']['consul']['node_name']='node1'
 default['pita']['enable_ssl']=false
-
 

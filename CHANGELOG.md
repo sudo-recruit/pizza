@@ -1,3 +1,6 @@
+##0.1.5
+* adjust td-agent recipes to add config
+
 ##0.1.4
 * add [datadog](https://github.com/DataDog/chef-datadog) recipes
 
