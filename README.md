@@ -5,6 +5,8 @@
 
 ###pita::default
 install `ruby`, `monit`,`nginx`,`nodejs`,`mysql-client`,`imagemagick`
+* `['pita']['enable_ssl']` - enable_ssl (default:false)
+
 
 ###pita::consul
 install [consul](https://www.consul.io/) for service discovery

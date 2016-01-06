@@ -1,6 +1,6 @@
 ---
 driver:
-  name: ssh
+  name: vagrant
 
 
 provisioner:
@@ -14,3 +14,9 @@ suites:
   - name: default
     run_list: pita::default
     attributes:
+      pita:
+        rails_app_name: my_rails_app
+        s3_bucket: s3_bucket
+        s3_region: s3_region
+        elasticsearch_host: 127.0.0.1
+        user_name: vagrant

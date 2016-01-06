@@ -20,6 +20,6 @@ default['pita']['monit_user']='admin'
 default['pita']['monit_password']='monit3345678'
 default['apt']['unattended_upgrades']['enable']=true
 default['pita']['consul']['node_name']='node1'
-
+default['pita']['enable_ssl']=false
 
 
