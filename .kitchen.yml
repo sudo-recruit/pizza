@@ -12,7 +12,7 @@ platforms:
 
 suites:
   - name: default
-    run_list: pita::default
+    run_list: pita::datadog
     attributes:
       pita:
         rails_app_name: my_rails_app

@@ -20,7 +20,8 @@ install [td-agent](https://www.consul.io/) to unified logging
 * `['pita']['s3_region']` - your s3 region (i.e. `ap-northeast-1`)
 * `['pita']['s3_bucket']` - your s3 bucket name (i.e. `my-s3-bucket`)     
 
-
+###pita::datadog
+install [datadog](https://www.datadoghq.com/) to monitor your infrastructure
 
 
 ##Authors and Contributors
