@@ -1,3 +1,6 @@
+##0.1.6
+* use logstash_dateformat %Y.%m. for elastic search
+
 ##0.1.5
 * adjust td-agent recipes to add config
 

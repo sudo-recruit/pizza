@@ -13,6 +13,7 @@
  <store>
   type elasticsearch
   logstash_format true
+  logstash_dateformat %Y.%m.
   host  <%= node['pita']['elasticsearch_host'] %>
   index_name nginx
   type_name nginx.access
