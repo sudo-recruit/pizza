@@ -1,3 +1,6 @@
+##0.1.7
+* use ruby 2.3 as default version
+
 ##0.1.6
 * use logstash_dateformat %Y.%m. for elastic search
 
