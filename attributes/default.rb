@@ -1,3 +1,4 @@
+default['pita']['ruby']['version']='2.3.0'
 default['nginx']['source']['version']='1.6.2'
 default['nginx']['source']['url']="http://nginx.org/download/nginx-1.6.2.tar.gz"
 default['nginx']['source']['checksum']="b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
