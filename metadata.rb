@@ -1,5 +1,5 @@
 name "pita"
-version "0.1.7"
+version "0.1.8"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
 license  "MIT"
@@ -17,6 +17,6 @@ depends 'td-agent'
 depends 'nodejs'
 depends 'datadog', '~> 2.2.0'
 depends 'unattended_upgrades'
-depends 'sudo_consul', '~> 0.0.3'
-depends 'simple_consul_alerts'
-depends 'sudo_consul_service'
+depends 'consul', '~> 1.4.3'
+depends 'consul-template', '~> 0.9.1'
+depends 'sudo_consul_service', '~> 0.0.4'

@@ -1,7 +1,4 @@
-node.default['consul']['config']['node_name'] = node['pita']['consul']['node_name']
-# node.default['consul']['config']['start_join'] = node['pita']['consul']['start_join']
-
-include_recipe "sudo_consul::default"
+include_recipe "consul::default"
 
 consul_definition "rails_#{node['pita']['rails_app_name']}" do
   type 'service'
