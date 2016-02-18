@@ -2,7 +2,10 @@ name "pita"
 version "0.1.7"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
+license  "MIT"
 supports "ubuntu"
+description "install all dependencies for sudo rails app"
+long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
 
 depends 'rbenv'
 depends 'nginx'
