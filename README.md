@@ -13,6 +13,9 @@ install [consul](https://www.consul.io/) for service discovery
 * `['consul']['config']['node_name']` - your consul node name (i.e. `my_rails_app1`)
 * `['consul']['config']['start_join']` - ip to join when consul start
 
+###pita::consul_template
+install `consul-template` and build `application.yml`
+* `['pita']['consul']['key_dir']` - consul key value dir to store your data
 
 ###pita::td-agent
 install [td-agent](https://www.consul.io/) to unified logging

@@ -1,3 +1,6 @@
-{{range ls "service/rails_sudo/next"}}
+{{range ls "<%= node['pita']['consul']['key_dir'] %>"}}
 {{.Key}}: {{.Value}}
 {{end}}
+
+
+ 

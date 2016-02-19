@@ -1,3 +1,6 @@
+##0.1.10
+* extract `application.ctmpl`'s data to attributes
+
 ##0.1.9
 * replace `monit` cookbook with `poise-monit`
 * extract monit nginx to `nginx` recipes
