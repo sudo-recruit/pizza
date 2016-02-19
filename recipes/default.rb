@@ -1,6 +1,6 @@
 include_recipe "apt"
-include_recipe "pita::nginx"
 include_recipe "pita::monit"
+include_recipe "pita::nginx"
 include_recipe "pita::ruby"
 
 include_recipe "nodejs::default"

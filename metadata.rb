@@ -1,5 +1,5 @@
 name "pita"
-version "0.1.8"
+version "0.1.9"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
 license  "MIT"
@@ -12,7 +12,7 @@ depends 'nginx'
 depends 'apt'
 depends 'yum'
 depends 'unicorn'
-depends 'monit'
+depends 'poise-monit'
 depends 'td-agent'
 depends 'nodejs'
 depends 'datadog', '~> 2.2.0'

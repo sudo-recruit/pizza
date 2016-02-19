@@ -1,3 +1,11 @@
+##0.1.9
+* replace `monit` cookbook with `poise-monit`
+* extract monit nginx to `nginx` recipes
+* only add `nginx.conf` when `rails_app_name` exist
+
+##0.1.8
+* refactor `consul`
+
 ##0.1.7
 * use ruby 2.3 as default version
 
