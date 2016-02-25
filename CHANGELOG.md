@@ -1,3 +1,6 @@
+##0.1.11
+* [pr1 add moro recipe](https://github.com/sudo-recruit/pita/pull/1)
+
 ##0.1.10
 * extract `application.ctmpl`'s data to attributes
 

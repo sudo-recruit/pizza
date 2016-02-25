@@ -1,5 +1,5 @@
 name "pita"
-version "0.1.10"
+version "0.1.11"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
 license  "MIT"
