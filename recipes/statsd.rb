@@ -4,7 +4,7 @@ user_name=node['pita']['user_name']
 
 rbenv_gem "moro" do
   ruby_version pita_ruby_version
-  version "0.0.8"
+  version "0.0.10"
 end
 
 directory '/etc/moro' do

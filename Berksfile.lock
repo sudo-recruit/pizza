@@ -73,7 +73,7 @@ GRAPH
     windows (~> 1.0)
   ohai (2.1.0)
   packagecloud (0.1.1)
-  pita (0.1.10)
+  pita (0.1.12)
     apt (>= 0.0.0)
     consul (~> 1.4.3)
     consul-template (~> 0.9.1)

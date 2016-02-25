@@ -1,3 +1,6 @@
+##0.1.12
+* upgrade moro gem to 0.0.10
+
 ##0.1.11
 * [pr1 add moro recipe](https://github.com/sudo-recruit/pita/pull/1)
 
