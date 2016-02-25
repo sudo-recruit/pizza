@@ -26,6 +26,19 @@ install [td-agent](https://www.consul.io/) to unified logging
 ###pita::datadog
 install [datadog](https://www.datadoghq.com/) to monitor your infrastructure
 
+###pita::statsd
+install [moro](https://github.com/sudo-recruit/moro) to monitor process memory usage
+* `['pita']['moro']` - your [moro](https://github.com/sudo-recruit/moro) config
+
+####example
+```rb
+default['pita']['moro']={
+  "processes"=>[ {"name"=> "my_awesome_server","pid"=> "/tmp/pids/server.pid"}],
+  "interval"=> 30,
+  "datadog"=>false
+}
+```
+
 
 ##Authors and Contributors
 * [ocowchun](ocowchun@gmail.com)

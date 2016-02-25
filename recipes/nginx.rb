@@ -1,3 +1,4 @@
+include_recipe "apt"
 include_recipe "nginx::source"
 
 app_name=node['pita']['rails_app_name']

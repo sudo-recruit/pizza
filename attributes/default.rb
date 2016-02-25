@@ -25,3 +25,9 @@ default['apt']['unattended_upgrades']['enable']=true
 default['pita']['consul']['node_name']='node1'
 default['pita']['enable_ssl']=false
 
+default['pita']['moro']={
+  "processes"=>[],
+  "interval"=> 30,
+  "datadog"=>false
+}
+
