@@ -1,4 +1,15 @@
 include_recipe "apt"
+
+apt_repository 'git' do
+  uri        'ppa:git-core/ppa'
+  distribution 'trusty'
+end
+
+git_client 'default' do
+  action :install
+  package_version  '1:2.7.4-0ppa1~ubuntu14.04.1'
+end
+
 include_recipe "pita::monit"
 include_recipe "pita::nginx"
 include_recipe "pita::ruby"
@@ -11,8 +22,5 @@ package 'imagemagick'
 package 'libmagickwand-dev'
 package 'libmysqlclient-dev'
 package 'curl'
-package 'git'
 package 'vim'
 include_recipe "unattended_upgrades"
-
-

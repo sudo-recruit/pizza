@@ -1,3 +1,6 @@
+##0.1.13
+* install git v2.7.4
+
 ##0.1.12
 * upgrade moro gem to 0.0.10
 
