@@ -19,6 +19,10 @@ include_recipe "nodejs::npm"
 nodejs_npm "vtop"
 
 package 'imagemagick'
+template "/etc/ImageMagick/policy.xml" do
+  source "imagemagick_policy.xml.erb"
+end
+
 package 'libmagickwand-dev'
 package 'libmysqlclient-dev'
 package 'curl'
