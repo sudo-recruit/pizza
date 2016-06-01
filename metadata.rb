@@ -1,5 +1,5 @@
 name "pita"
-version "0.1.14"
+version "0.1.15"
 maintainer "ocowchun"
 maintainer_email "ocowchun@gmail.com"
 license  "MIT"
@@ -19,6 +19,6 @@ depends 'nodejs'
 depends 'datadog', '~> 2.2.0'
 depends 'unattended_upgrades'
 depends 'consul', '~> 1.4.3'
-depends 'consul-template', '~> 0.9.1'
+depends 'consul-template', '~> 0.10.0'
 depends 'sudo_consul_service', '~> 0.0.4'
 depends 'git', '~> 4.3.7'

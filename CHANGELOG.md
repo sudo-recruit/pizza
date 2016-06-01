@@ -1,3 +1,6 @@
+##0.1.15
+* upgrade consul-template gem to 0.10.0
+
 ##0.1.14
 * handle CVE-2016–3714
 
