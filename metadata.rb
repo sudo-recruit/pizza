@@ -10,7 +10,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
 depends 'rbenv'
 depends 'nginx'
 depends 'apt'
-depends 'yum'
+# depends 'yum'
 depends 'unicorn'
 depends 'poise-service', '~> 1.1.1'
 depends 'poise-monit'
