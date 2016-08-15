@@ -1,3 +1,7 @@
+##0.1.16
+* remove unnecessary `yum` package because we use Ubuntu
+* not restrict version number of `git`
+
 ##0.1.15
 * upgrade consul-template gem to 0.10.0
 
