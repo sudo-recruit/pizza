@@ -7,7 +7,7 @@ end
 
 git_client 'default' do
   action :install
-  package_version  '1:2.7.4-0ppa1~ubuntu14.04.1'
+  # package_version  '1:2.7.4-0ppa1~ubuntu14.04.1'
 end
 
 include_recipe "pita::monit"
