@@ -9,8 +9,7 @@ include_recipe "pizza::ruby"
 # include_recipe "nodejs::default"
 # include_recipe "nodejs::npm"
 
-# package "libmagickwand-dev"
-# package "libmysqlclient-dev"
 # include_recipe "unattended_upgrades"
 
 include_recipe "pizza::ssh"
+include_recipe "pizza::westudent-jb"

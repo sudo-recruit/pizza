@@ -8,6 +8,8 @@ template "/etc/ImageMagick/policy.xml" do
 end
 
 package "libffi-dev"
+package "libmagickwand-dev"
+package "libmysqlclient-dev"
 
 pizza_ruby_version = node["pizza"]["ruby"]["version"]
 

@@ -19,7 +19,7 @@ default["td_agent"]["version"] = "2"
 default["td_agent"]["includes"] = true
 
 default["pizza"]["consul"]["node_name"] = "node1"
-default["pizza"]["deploy_to"] = "/home/ubuntu/apps"
+default["pizza"]["deploy_to"] = "/home/ubuntu/app"
 default["pizza"]["enable_ssl"] = false
 default["pizza"]["monit_password"] = "monit3345678"
 default["pizza"]["monit_port"] = "3737"
@@ -27,4 +27,4 @@ default["pizza"]["monit_user"] = "admin"
 default["pizza"]["moro"] = { "processes" => [], "interval" => 30, "datadog" => false }
 default["pizza"]["rails_app_name"] = "foobar"
 default["pizza"]["ruby"]["version"] = "2.3.0"
-default["pizza"]["user_name"] = "ubuntu"
+default["pizza"]["username"] = "ubuntu"
