@@ -9,7 +9,7 @@ git deploy_to do
 end
 
 execute "bundle_install" do
-  command "bundle install -j4 --without development test"
+  command "/opt/rbenv/shims/bundle install --deployment -j4 --without development test"
   cwd deploy_to
   group username
   user username
