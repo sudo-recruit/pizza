@@ -9,12 +9,12 @@ end
 
 package "libffi-dev"
 
-pita_ruby_version = node["pita"]["ruby"]["version"]
+pizza_ruby_version = node["pizza"]["ruby"]["version"]
 
-rbenv_ruby pita_ruby_version do
+rbenv_ruby pizza_ruby_version do
   global true
 end
 
 rbenv_gem "bundler" do
-  ruby_version pita_ruby_version
+  ruby_version pizza_ruby_version
 end

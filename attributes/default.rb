@@ -18,13 +18,13 @@ default["td_agent"]["plugins"] = %w(elasticsearch s3)
 default["td_agent"]["version"] = "2"
 default["td_agent"]["includes"] = true
 
-default["pita"]["consul"]["node_name"] = "node1"
-default["pita"]["deploy_to"] = "/home/ubuntu/apps"
-default["pita"]["enable_ssl"] = false
-default["pita"]["monit_password"] = "monit3345678"
-default["pita"]["monit_port"] = "3737"
-default["pita"]["monit_user"] = "admin"
-default["pita"]["moro"] = { "processes" => [], "interval" => 30, "datadog" => false }
-default["pita"]["rails_app_name"] = "foobar"
-default["pita"]["ruby"]["version"] = "2.3.0"
-default["pita"]["user_name"] = "ubuntu"
+default["pizza"]["consul"]["node_name"] = "node1"
+default["pizza"]["deploy_to"] = "/home/ubuntu/apps"
+default["pizza"]["enable_ssl"] = false
+default["pizza"]["monit_password"] = "monit3345678"
+default["pizza"]["monit_port"] = "3737"
+default["pizza"]["monit_user"] = "admin"
+default["pizza"]["moro"] = { "processes" => [], "interval" => 30, "datadog" => false }
+default["pizza"]["rails_app_name"] = "foobar"
+default["pizza"]["ruby"]["version"] = "2.3.0"
+default["pizza"]["user_name"] = "ubuntu"
