@@ -2,7 +2,7 @@ default["apt"]["unattended_upgrades"]["enable"] = true
 
 default["consul"]["version"] = "0.5.2"
 
-default["monit"]["allow"] = ["localhost","admin:monit","0.0.0.0/0.0.0.0"]
+default["monit"]["allow"] = ["localhost", "admin:monit", "0.0.0.0/0.0.0.0"]
 
 default["nginx"]["source"]["checksum"] = "b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
 default["nginx"]["source"]["modules"] = %w(
@@ -12,6 +12,10 @@ default["nginx"]["source"]["modules"] = %w(
 )
 default["nginx"]["source"]["url"] = "http://nginx.org/download/nginx-1.6.2.tar.gz"
 default["nginx"]["source"]["version"] = "1.6.2"
+
+default["nodejs"]["install_method"] = "binary"
+default["nodejs"]["version"] = "5.10.0"
+default["nodejs"]["binary"]["checksum"]["linux_x64"] = "a458ddab5f8d071c9b4f24ccfa685aedd57ccf7338c3ea0e2b99546cf35a3958"
 
 default["td_agent"]["api_key"] = "foo_bar"
 default["td_agent"]["plugins"] = %w(elasticsearch s3)
