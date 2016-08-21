@@ -7,7 +7,7 @@ supports "ubuntu"
 description "Chef cookbook to cook Ruby on Rails project in Sudo"
 long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
 
-# depends "apt"
+depends "apt"
 # depends "consul"
 # depends "consul-template"
 # depends "datadog"
