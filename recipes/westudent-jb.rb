@@ -1,7 +1,8 @@
-username = node["pizza"]["username"]
+app_name = node["pizza"]["app_name"]
 database_url = node["pizza"]["database_url"]
 repository = node["pizza"]["repository"]
 secret_key_base = node["pizza"]["secret_key_base"]
+username = node["pizza"]["username"]
 
 deploy_to = "/home/#{username}/app"
 
@@ -59,4 +60,21 @@ execute "assets_precompile" do
   environment({ "RAILS_ENV" => "staging" })
   group username
   user username
+end
+
+directory "#{deploy_to}/tmp/pids" do
+  group username
+  user username
+end
+
+template "#{deploy_to}/config/unicorn.rb" do
+  variables app_name: app_name, deploy_to: deploy_to, unicorn_worker_count: 5
+end
+
+template "/etc/init.d/unicorn_#{app_name}" do
+  group "root"
+  mode "0755"
+  owner "root"
+  source "unicorn_init.erb"
+  variables deploy_to: deploy_to, rails_env: "staging", username: username
 end

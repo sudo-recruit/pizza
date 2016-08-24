@@ -1,8 +1,11 @@
 default["apt"]["unattended_upgrades"]["enable"] = true
 
+default["consul"]["config"]["advertise_addr"] = "192.168.33.10"
+default["consul"]["config"]["node_name"] = "node1"
+default["consul"]["config"]["start_join"] = %w(192.168.33.1) # IP address of host machine from Vagrant
 default["consul"]["version"] = "0.5.2"
 
-default["monit"]["allow"] = ["localhost", "admin:monit", "0.0.0.0/0.0.0.0"]
+default["monit"]["allow"] = %w(localhost admin:monit 0.0.0.0/0.0.0.0)
 
 default["nginx"]["source"]["checksum"] = "b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
 default["nginx"]["source"]["modules"] = %w(
@@ -22,6 +25,7 @@ default["td_agent"]["plugins"] = %w(elasticsearch s3)
 default["td_agent"]["version"] = "2"
 default["td_agent"]["includes"] = true
 
+default["pizza"]["app_name"] = "app"
 default["pizza"]["consul"]["node_name"] = "node1"
 default["pizza"]["deploy_to"] = "/home/ubuntu/app"
 default["pizza"]["enable_ssl"] = false
@@ -29,6 +33,5 @@ default["pizza"]["monit_password"] = "monit3345678"
 default["pizza"]["monit_port"] = "3737"
 default["pizza"]["monit_user"] = "admin"
 default["pizza"]["moro"] = { "processes" => [], "interval" => 30, "datadog" => false }
-default["pizza"]["rails_app_name"] = "foobar"
 default["pizza"]["ruby"]["version"] = "2.3.0"
 default["pizza"]["username"] = "ubuntu"

@@ -1,6 +1,6 @@
 # Pizza
 
-> Chef cookbook to build Ruby on Rails project in Sudo
+> Chef cookbook to build Ruby on Rails project in Sudo, inherited from [Pita](https://github.com/sudo-recruit/pita) project
 
 ## How to contribute
 
@@ -10,29 +10,29 @@
 
 ### pizza::default
 
-Install `ruby`, `monit`, `nginx`, `nodejs`, `mysql-client`, and `imagemagick`
+Install `ruby`, `nginx`, `nodejs`, `mysql-client`, and `imagemagick`
 
-* `["pizza"]["enable_ssl"]` - enable SSL? (default: false)
+* `["pizza"]["enable_ssl"]` `boolean` enable SSL? (default: false)
 
 ### pizza::consul
 
 Install [consul](https://www.consul.io/) for service discovery
 
-* `["consul"]["config"]["node_name"]` - your consul node name (i.e. `my_rails_app1`)
-* `["consul"]["config"]["start_join"]` - ip to join when consul start
+* `["consul"]["config"]["node_name"]` `string` node name of consul in application machine (i.e. `my_rails_app1`)
+* `["consul"]["config"]["start_join"]` `array(string)` IP address to join when consul start
 
 ### pizza::consul_template
 
 Install `consul-template` and build `application.yml`
 
-* `["pizza"]["consul"]["key_dir"]` - consul key value dir to store your data
+* `["pizza"]["consul"]["key_dir"]` `string` consul key value directory to store your data
 
 ### pizza::td-agent
 
 Install [td-agent](https://www.consul.io/) to for logging centralization
 
-* `["pizza"]["s3_region"]` - your s3 region (i.e. `ap-northeast-1`)
-* `["pizza"]["s3_bucket"]` - your s3 bucket name (i.e. `my-s3-bucket`)     
+* `["pizza"]["s3_region"]` `string` your AWS S3 region (i.e. `ap-northeast-1`)
+* `["pizza"]["s3_bucket"]` `string` your AWS S3 bucket name (i.e. `my-s3-bucket`)     
 
 ### pizza::datadog
 
@@ -42,7 +42,7 @@ Install [datadog](https://www.datadoghq.com/) to monitor your infrastructure
 
 Install [moro](https://github.com/sudo-recruit/moro) to monitor process memory usage
 
-* `["pizza"]["moro"]` - your [moro](https://github.com/sudo-recruit/moro) config
+* `["pizza"]["moro"]` `hash` [moro](https://github.com/sudo-recruit/moro) config of application machine
 
 #### example
 

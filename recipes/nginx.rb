@@ -1,18 +1,16 @@
-include_recipe "apt"
+app_name = node["pizza"]["app_name"]
+
 include_recipe "nginx::source"
 
-app_name=node['pita']['rails_app_name']
-if app_name!=nil&&app_name.length>0
-  template "/etc/nginx/sites-enabled/#{app_name}" do
-    owner "root"
-    group "root"
-    mode "0777"
-    source "nginx.conf.erb"
-  end
+template "/etc/nginx/sites-enabled/#{app_name}" do
+  group "root"
+  mode "0644"
+  owner "root"
+  source "nginx.conf.erb"
 end
 
-include_recipe "pita::monit"
+include_recipe "poise-monit"
 
-monit_config 'nginx' do
+monit_config "nginx" do
   source "monit_nginx.conf.erb"
 end
