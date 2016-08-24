@@ -1,6 +1,3 @@
-{{range ls "<%= node['pita']['consul']['key_dir'] %>"}}
-{{.Key}}: {{.Value}}
-{{end}}
-
-
- 
+{{ range ls "<%= node["pizza"]["consul"]["key_dir"] %>" }}
+{{ .Key }}: {{ .Value }}
+{{ end }}

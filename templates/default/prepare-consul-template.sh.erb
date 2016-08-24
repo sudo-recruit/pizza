@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e # reference: http://unix.stackexchange.com/q/15998
+
+DELAY=3
+
+CONSUL_TEMPLATE=$(which consul-template)
+GENERATE_CONSUL_TEMPLATE_SCRIPT="/usr/local/bin/generate-consul-template.rb"
+SERVICE=$(which service)
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
+$GENERATE_CONSUL_TEMPLATE_SCRIPT $1 $2
+
+$SERVICE consul restart
+
+sleep $DELAY # wait until consul join the cluster
+
+$CONSUL_TEMPLATE \
+  -consul 127.0.0.1:8500 \
+  -template "<%= @deploy_to %>/config/application.ctmpl:<%= @deploy_to %>/config/application.yml:service unicorn_app restart" \
+  -retry 10s \
+  -once

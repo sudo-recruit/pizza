@@ -1,2 +1,4 @@
-.kitchen/
 .kitchen.local.yml
+.kitchen/
+id_rsa
+id_rsa.pub

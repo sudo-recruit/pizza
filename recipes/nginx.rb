@@ -1,18 +1,29 @@
-include_recipe "apt"
+app_name = ckattr("pizza.app_name", node["pizza"]["app_name"], String)
+
 include_recipe "nginx::source"
 
-app_name=node['pita']['rails_app_name']
-if app_name!=nil&&app_name.length>0
-  template "/etc/nginx/sites-enabled/#{app_name}" do
-    owner "root"
-    group "root"
-    mode "0777"
-    source "nginx.conf.erb"
-  end
+ckattr("pizza.app_name", node["pizza"]["app_name"], String)
+ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
+
+# Since Ruby does not have `Boolean` class
+enable_ssl = node["pizza"]["enable_ssl"]
+if !enable_ssl.is_a?(TrueClass) && !enable_ssl.is_a?(FalseClass)
+  Chef::Application.fatal!("attribute pizza.enable_ssl is undefined")
+end
+if enable_ssl
+  ckattr("pizza.ssl_cert", node["pizza"]["ssl_cert"], String)
+  ckattr("pizza.ssl_key", node["pizza"]["ssl_key"], String)
 end
 
-include_recipe "pita::monit"
+template "/etc/nginx/sites-enabled/#{app_name}" do
+  group "root"
+  mode "0644"
+  owner "root"
+  source "nginx.conf.erb"
+end
 
-monit_config 'nginx' do
+include_recipe "poise-monit"
+
+monit_config "nginx" do
   source "monit_nginx.conf.erb"
 end

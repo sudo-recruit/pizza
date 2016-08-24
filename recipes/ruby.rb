@@ -1,14 +1,22 @@
+pizza_ruby_version = ckattr("pizza.ruby.version", node["pizza"]["ruby"]["version"], String)
+
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
-package 'libffi-dev'
+package "imagemagick"
 
-pita_ruby_version=node['pita']['ruby']['version']
+template "/etc/ImageMagick/policy.xml" do
+  source "imagemagick_policy.xml.erb"
+end
 
-rbenv_ruby pita_ruby_version do
-  global(true)
+package "libffi-dev"
+package "libmagickwand-dev"
+package "libmysqlclient-dev"
+
+rbenv_ruby pizza_ruby_version do
+  global true
 end
 
 rbenv_gem "bundler" do
-  ruby_version pita_ruby_version
+  ruby_version pizza_ruby_version
 end

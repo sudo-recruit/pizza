@@ -1,16 +1,26 @@
+deploy_to = ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
+username = ckattr("pizza.username", node["pizza"]["username"], String)
+
+root = "root"
+
 include_recipe "consul-template::default"
 
-template "#{node['pita']['deploy_to']}/shared/application.ctmpl" do
-  source "application.ctmpl.erb"
-  owner "#{node['pita']['user_name']}"
-  group "#{node['pita']['user_name']}"
+ckattr("pizza.consul.key_dir", node["pizza"]["consul"]["key_dir"], String)
+template "#{deploy_to}/config/application.ctmpl" do
+  group username
+  owner username
 end
 
-consul_template_config 'rails' do
-  templates [{
-               source: "#{node['pita']['deploy_to']}/shared/application.ctmpl",
-               destination: "#{node['pita']['deploy_to']}/shared/config/application.yml",
-               command: "service unicorn_#{node['pita']['rails_app_name']} restart"
-  }]
-  notifies :reload, 'service[consul-template]', :delayed
+ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
+template "/usr/local/bin/prepare-consul-template.sh" do
+  group root
+  mode "0755"
+  owner root
+  variables deploy_to: deploy_to
+end
+
+cookbook_file "/usr/local/bin/generate-consul-template.rb" do
+  group root
+  mode "0755"
+  owner root
 end
