@@ -1,3 +1,7 @@
+## 1.0.2
+
+* minor modification on `monit` configuration file
+
 ## 1.0.1
 
 * update `.kitchen.yml`
