@@ -1,3 +1,7 @@
+## 1.0.1
+
+* update `.kitchen.yml`
+
 ## 1.0.0
 
 * disable other recipes such as monitoring services to focus on testing ruby recipe

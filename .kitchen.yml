@@ -1,6 +1,10 @@
 ---
 driver:
   name: vagrant
+  customize:
+    memory: 4096
+  network:
+    - ["private_network", { ip: "192.168.33.10" }]
 
 provisioner:
   name: chef_solo
@@ -10,11 +14,14 @@ platforms:
 
 suites:
   - name: default
-    run_list: pita::default
+    run_list: pizza::default
     attributes:
-      pita:
-        rails_app_name: my_rails_app
-        s3_bucket: s3_bucket
-        s3_region: s3_region
-        elasticsearch_host: 127.0.0.1
-        user_name: vagrant
+      pizza:
+        consul:
+          key_dir: "some/secret/key/value/pairs"
+        database_url: mysql2://user:password@database-host:1234/database-name
+        deploy_to: /home/user/application
+        repository: "git@github.com:user/repo.git"
+        secret_key_base: veryverysecretkey
+        ssh_key: "DO_YOU_THINK_I_AM_THAT_STUPID_TO_PUT_SSH_KEY_HERE"
+        username: user
