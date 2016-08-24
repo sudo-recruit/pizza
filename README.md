@@ -6,6 +6,52 @@
 
 * Pizza is self-referenced in `Berksfile`, so don't forget to run `berks update` to synchronize version number in `Berksfile.lock`.
 
+### Duplicate in Local Machine
+
+If you want to duplicate the entire environment on local machine, please follow the following steps.
+
+#### Download consul
+
+Download and install consul. For macOS, use [Homebrew](http://brew.sh/): `brew install consul`.
+
+#### Start consul on Vagrant host (your machine)
+
+Start consul in development mode.
+
+```shell
+$ consul agent -ui -bootstrap -server -dc='dc1' -data-dir=$PWD -bind=$VAGRANT_IP_DEFAULT_GATEWAY
+```
+
+* `$PWD` is what it is, you don't have to modify it.
+* If IP address of Vagrant machine created by Kitchen is `192.168.33.10`, `$VAGRANT_IP_DEFAULT_GATEWAY` is usually `192.168.33.1`. Actually, `192.168.33.10` is the default value of `.kitchen.yml`, so you can merely replace it with `192.168.33.1`.
+
+#### Prepare consul key/value pairs
+
+Navigate to consul web interface, i.e. `http://127.0.0.1:8500/ui/#/dc1/kv/`. Prepare your key/value pairs, such as `HOST` and `SECRET_KEY_BASE`, to be injected into `application.yml`.
+
+#### Log into the Vagrant guest
+
+In the root of Pizza project.
+
+```shell
+# On host
+$ kitchen login
+
+# On guest
+vagrant@default-ubuntu-1404:~$ sudo /usr/local/bin/prepare-consul-template.sh $CLIENT_IP $SERVER_IP
+# This step would be little longer than you expected due to unicorn, but it's fine
+
+# Then you would have `application.yml` for the application
+vagrant@default-ubuntu-1404:~$ cat app/config/application.yml
+```
+
+* `$CLIENT_IP` is IP address of target machine acting as consul **client** node, i.e. `192.168.33.10` (default value).
+* `$SERVER_IP` is IP address of consul **server** node, i.e. `192.168.33.1` (default value).
+
+#### Open the Browser
+
+Navigate to IP address of guest, i.e. `http://192.168.33.10/`, the website should be online now.
+
 ## Recipes
 
 > sorted in execution order
