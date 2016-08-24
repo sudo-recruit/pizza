@@ -1,6 +1,6 @@
 server {
   listen <%= node['pita']['monit_port'] %>;
-  location /{
+  location / {
     proxy_pass http://127.0.0.1:3737;
     proxy_set_header Host $host;
   }
