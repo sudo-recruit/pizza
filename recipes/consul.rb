@@ -1,4 +1,4 @@
-app_name = node["pizza"]["app_name"]
+app_name = ckattr("pizza.app_name", node["pizza"]["app_name"], String)
 
 include_recipe "consul::default"
 

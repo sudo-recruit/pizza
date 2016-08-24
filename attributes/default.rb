@@ -20,18 +20,17 @@ default["nodejs"]["install_method"] = "binary"
 default["nodejs"]["version"] = "5.10.0"
 default["nodejs"]["binary"]["checksum"]["linux_x64"] = "a458ddab5f8d071c9b4f24ccfa685aedd57ccf7338c3ea0e2b99546cf35a3958"
 
-default["td_agent"]["api_key"] = "foo_bar"
-default["td_agent"]["plugins"] = %w(elasticsearch s3)
-default["td_agent"]["version"] = "2"
-default["td_agent"]["includes"] = true
-
 default["pizza"]["app_name"] = "app"
 default["pizza"]["consul"]["node_name"] = "node1"
 default["pizza"]["deploy_to"] = "/home/ubuntu/app"
 default["pizza"]["enable_ssl"] = false
-default["pizza"]["monit_password"] = "monit3345678"
-default["pizza"]["monit_port"] = "3737"
-default["pizza"]["monit_user"] = "admin"
-default["pizza"]["moro"] = { "processes" => [], "interval" => 30, "datadog" => false }
 default["pizza"]["ruby"]["version"] = "2.3.0"
+default["pizza"]["unicorn_worker_count"] = 5
 default["pizza"]["username"] = "ubuntu"
+
+# unused attributes
+
+default["td_agent"]["api_key"] = "foo_bar"
+default["td_agent"]["plugins"] = %w(elasticsearch s3)
+default["td_agent"]["version"] = "2"
+default["td_agent"]["includes"] = true

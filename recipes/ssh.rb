@@ -1,5 +1,5 @@
-username = node["pizza"]["username"]
-ssh_key_content = node["pizza"]["ssh_key"]
+username = ckattr("pizza.username", node["pizza"]["username"], String)
+ssh_key_content = ckattr("pizza.ssh_key", node["pizza"]["ssh_key"], String)
 
 ssh_known_hosts_entry "github.com"
 

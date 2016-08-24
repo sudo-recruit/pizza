@@ -1,3 +1,5 @@
+pizza_ruby_version = ckattr("pizza.ruby.version", node["pizza"]["ruby"]["version"], String)
+
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
@@ -10,8 +12,6 @@ end
 package "libffi-dev"
 package "libmagickwand-dev"
 package "libmysqlclient-dev"
-
-pizza_ruby_version = node["pizza"]["ruby"]["version"]
 
 rbenv_ruby pizza_ruby_version do
   global true
