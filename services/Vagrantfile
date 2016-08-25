@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+  end
+  
+  config.vm.define :consul do |consul|
+    consul.vm.box = "ubuntu/trusty64"
+    consul.vm.network :private_network, ip: "192.168.33.11"
+    consul.vm.provision :ansible_local do |ansible|
+      ansible.playbook = "consul/playbook.yml"
+      ansible.galaxy_role_file = "consul/requirements.yml"
+    end
+  end
+
+  config.vm.define :es do |es|
+    es.vm.box = "https://s3-ap-northeast-1.amazonaws.com/sudo-storage/vagrant_box/elastic_search2.3with_ik.box"
+    es.vm.network :private_network, ip: "192.168.33.12"
+    es.ssh.username = "vagrant"
+    es.ssh.password = "vagrant"
+    es.ssh.insert_key = false
+  end
+end

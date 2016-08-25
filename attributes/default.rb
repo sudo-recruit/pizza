@@ -2,7 +2,7 @@ default["apt"]["unattended_upgrades"]["enable"] = true
 
 default["consul"]["config"]["advertise_addr"] = "192.168.33.10"
 default["consul"]["config"]["node_name"] = "node1"
-default["consul"]["config"]["start_join"] = %w(192.168.33.1) # IP address of host machine from Vagrant
+default["consul"]["config"]["start_join"] = %w(192.168.33.11) # IP address of host machine from Vagrant
 default["consul"]["version"] = "0.5.2"
 
 default["monit"]["allow"] = %w(localhost admin:monit 0.0.0.0/0.0.0.0)
