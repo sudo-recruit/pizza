@@ -10,24 +10,41 @@
 
 If you want to duplicate the entire environment on local machine, please follow the following steps.
 
-#### Download consul
-
-Download and install consul. For macOS, use [Homebrew](http://brew.sh/): `brew install consul`.
-
-#### Start consul on Vagrant host (your machine)
-
-Start consul in development mode.
+#### Start consul and ElasticSearch
 
 ```shell
-$ consul agent -ui -bootstrap -server -dc='dc1' -data-dir=$PWD -bind=$VAGRANT_IP_DEFAULT_GATEWAY
+$ cd services
+
+# This command would start TWO INSTANCES: consul and es
+$ vagrant up
 ```
 
-* `$PWD` is what it is, you don't have to modify it.
-* If IP address of Vagrant machine created by Kitchen is `192.168.33.10`, `$VAGRANT_IP_DEFAULT_GATEWAY` is usually `192.168.33.1`. Actually, `192.168.33.10` is the default value of `.kitchen.yml`, so you can merely replace it with `192.168.33.1`.
+#### Check ElasticSearch is running
+
+```shell
+$ curl http://192.168.33.12:9200/
+```
+
+The above command should return the following result.
+
+```json
+{
+  "name" : "node1",
+  "cluster_name" : "my_escluster",
+  "version" : {
+    "number" : "2.3.0",
+    "build_hash" : "8371be8d5fe5df7fb9c0516c474d77b9feddd888",
+    "build_timestamp" : "2016-03-29T07:54:48Z",
+    "build_snapshot" : false,
+    "lucene_version" : "5.5.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 #### Prepare consul key/value pairs
 
-Navigate to consul web interface, i.e. `http://127.0.0.1:8500/ui/#/dc1/kv/`. Prepare your key/value pairs, such as `HOST` and `SECRET_KEY_BASE`, to be injected into `application.yml`.
+Navigate to consul web interface, i.e. `http://192.168.33.11:8500/ui/#/dc1/kv/`. Prepare your key/value pairs, such as `HOST` and `SECRET_KEY_BASE`, to be injected into `application.yml`.
 
 #### Log into the Vagrant guest
 
@@ -46,11 +63,19 @@ vagrant@default-ubuntu-1404:~$ cat app/config/application.yml
 ```
 
 * `$CLIENT_IP` is IP address of target machine acting as consul **client** node, i.e. `192.168.33.10` (default value).
-* `$SERVER_IP` is IP address of consul **server** node, i.e. `192.168.33.1` (default value).
+* `$SERVER_IP` is IP address of consul **server** node, i.e. `192.168.33.11` (default value).
 
 #### Open the Browser
 
 Navigate to IP address of guest, i.e. `http://192.168.33.10/`, the website should be online now.
+
+Now we should have three instances running.
+
+Instance | IP address | Description
+--- | --- | ---
+(no name) | `192.168.33.10:80` | Application instance started by `kitchen`
+`consul` | `192.168.33.11:8500` | consul: service discovery
+`es` | `192.168.33.12:9200` | ElasticSearch with IK plugin
 
 ## Recipes
 

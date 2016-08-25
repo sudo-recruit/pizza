@@ -1,3 +1,8 @@
+## 1.1.0
+
+* put `consul` in a Vagrant instance
+* add `elasticsearch` instance in Vagrant
+
 ## 1.0.2
 
 * minor modification on `monit` configuration file
