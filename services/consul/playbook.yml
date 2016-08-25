@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  roles:
+    - role: savagegus.consul
+      consul_bind_address: "{{ ansible_default_ipv4['address'] }}"
+      consul_bootstrap: true
+      consul_datacenter: dc1
+      consul_is_server: true
+      consul_is_ui: true
+      consul_node_name: "consul-local"
+  tasks:
+    - file: path=/etc/nginx/sites-enabled/default state=absent
+      notify:
+        - restart_nginx
+  handlers:
+    - name: restart_nginx
+      service: name=nginx state=restarted
