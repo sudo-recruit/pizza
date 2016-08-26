@@ -1,17 +1,22 @@
-## 1.1.0
+# 1.1.1
+
+* reduce instances' memory usage
+* put database URI in `consul` key/value store
+
+# 1.1.0
 
 * put `consul` in a Vagrant instance
 * add `elasticsearch` instance in Vagrant
 
-## 1.0.2
+# 1.0.2
 
 * minor modification on `monit` configuration file
 
-## 1.0.1
+# 1.0.1
 
 * update `.kitchen.yml`
 
-## 1.0.0
+# 1.0.0
 
 * disable other recipes such as monitoring services to focus on testing ruby recipe
 * prepare a `Gemfile` for Kitchen
@@ -27,6 +32,6 @@
     * run `bower install`, `npm install`, and `webpack` (in `production` mode)
     * inject `application.yml` from consul key/value pair
 
-## 0.1.0
+# 0.1.0
 
 * forked from [pita](https://github.com/sudo-recruit/pita) project, focused on building Chef cookbook to build Ruby on Rails project in Sudo.
