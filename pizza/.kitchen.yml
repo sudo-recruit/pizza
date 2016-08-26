@@ -19,7 +19,7 @@ suites:
       pizza:
         consul:
           key_dir: "some/secret/key/value/pairs"
-        database_url: mysql2://user:password@database-host:1234/database-name
+        database_url: "adapter://user:password@host:3306/database"
         deploy_to: /home/user/application
         repository: "git@github.com:user/repo.git"
         secret_key_base: veryverysecretkey

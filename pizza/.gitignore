@@ -1,0 +1,5 @@
+.kitchen.local.yml
+.kitchen/
+berks-cookbooks/
+id_rsa
+id_rsa.pub

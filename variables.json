@@ -1,0 +1,11 @@
+{
+  "base_ami": "ami-a21529cc",
+  "consul_key_dir": "some/secret/key/value/pairs",
+  "database_url": "adapter://user:password@host:3306/database",
+  "deploy_to": "/home/user/application",
+  "repository": "git@github.com:user/repo.git",
+  "secret_key_base": "veryverysecretkey",
+  "security_group_id": "sg-1a2b3c4d",
+  "ssh_key": "DO_YOU_THINK_I_AM_THAT_STUPID_TO_PUT_SSH_KEY_HERE",
+  "username": "user"
+}
