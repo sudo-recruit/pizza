@@ -10,7 +10,7 @@ task base_ami: [:berks] do
   sh "packer build -var-file=variables.local.json packer-without-app.json"
 end
 
-desc "Create final version of image"
+desc "Create image with application"
 task ami: [:berks] do
   sh "packer build -var-file=variables.local.json packer.json"
 end
