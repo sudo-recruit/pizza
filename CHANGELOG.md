@@ -1,4 +1,8 @@
-# 2.0
+# 2.0.1
+
+* separate README for Packer configuration and cookbook
+
+# 2.0.0
 
 * add configuration file for Packer to make AMI
 
