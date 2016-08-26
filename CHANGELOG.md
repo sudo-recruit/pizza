@@ -1,3 +1,7 @@
+# 2.0.2
+
+* fix bug: write consul configuration to `/etc/consul/consul.json`
+
 # 2.0.1
 
 * separate README for Packer configuration and cookbook
