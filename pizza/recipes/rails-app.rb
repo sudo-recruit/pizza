@@ -45,7 +45,10 @@ execute "webpack_production" do
   user username
 end
 
-cookbook_file "#{deploy_to}/config/database.yml"
+database_url = ckattr("pizza.database_url", node["pizza"]["database_url"], String)
+template "#{deploy_to}/config/database.yml" do
+  variables database_url: database_url
+end
 
 secret_key_base = ckattr("pizza.secret_key_base", node["pizza"]["secret_key_base"], String)
 template "#{deploy_to}/config/secrets.yml" do

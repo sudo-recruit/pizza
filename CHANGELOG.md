@@ -1,3 +1,7 @@
+# 2.0
+
+* add configuration file for Packer to make AMI
+
 # 1.1.1
 
 * reduce instances' memory usage
