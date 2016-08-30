@@ -26,7 +26,8 @@ task ami_ci: [:berks] do
     "-var 'secret_key_base=$SECRET_KEY_BASE' " +
     "-var 'security_group_id=$SECURITY_GROUP_ID' " +
     "-var 'ssh_key=$SSH_KEY' " +
-    "-var 'username=$USERNAME'"
+    "-var 'username=$USERNAME' " +
+    "packer-ci.json"
 end
 
 task default: :ami

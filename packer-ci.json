@@ -34,6 +34,11 @@
       },
       "run_list": "pizza::default-without-app",
       "type": "chef-solo"
+    },
+    {
+      "destination": "{{ user `deploy_to` }}/public/assets",
+      "source": "../public/assets/",
+      "type": "file"
     }
   ]
 }
