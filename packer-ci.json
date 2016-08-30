@@ -15,6 +15,15 @@
   ],
   "provisioners": [
     {
+      "inline": ["mkdir {{ user `deploy_to` }}"],
+      "type": "shell"
+    },
+    {
+      "destination": "{{ user `deploy_to` }}",
+      "source": "{{ user `ci_app_path` }}",
+      "type": "file"
+    },
+    {
       "cookbook_paths": [
         "vendor"
       ],
