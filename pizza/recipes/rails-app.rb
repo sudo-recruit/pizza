@@ -6,13 +6,11 @@ deploy_to = ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
 
 rails_env = "staging"
 
-if node["pizza"]["clone_via_git"]
-  git deploy_to do
-    action :sync
-    group username
-    repository repository
-    user username
-  end
+git deploy_to do
+  action :sync
+  group username
+  repository repository
+  user username
 end
 
 execute "bundle_install" do
@@ -57,23 +55,16 @@ template "#{deploy_to}/config/secrets.yml" do
   variables secret_key_base: secret_key_base
 end
 
-if node["pizza"]["compile_assets"]
-  execute "assets_precompile" do
-    command "/opt/rbenv/shims/bundle exec rake assets:precompile"
-    creates "#{deploy_to}/public/assets"
-    cwd deploy_to
-    environment({ "RAILS_ENV" => rails_env })
-    group username
-    user username
-  end
-end
-
-directory "#{deploy_to}/tmp/pids" do
+execute "assets_precompile" do
+  command "/opt/rbenv/shims/bundle exec rake assets:precompile"
+  creates "#{deploy_to}/public/assets"
+  cwd deploy_to
+  environment({ "RAILS_ENV" => rails_env })
   group username
   user username
 end
 
-directory "#{deploy_to}/public/assets" do
+directory "#{deploy_to}/tmp/pids" do
   group username
   user username
 end

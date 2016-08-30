@@ -86,7 +86,7 @@ Instance | IP address | Description
 Recipe | Description
 --- | ---
 `recipes/consul.rb` | Install [consul](https://www.consul.io/) and register two health checks.
-`recipes/consul-template.rb` | Prepare two files: `prepare-consul-template.sh` and `generate-consul-template.rb`. The former one takes two arguments: 'IP address of consul client' (i.e. `192.168.1.10`) and 'IP address of consul server' (i.e. `192.168.1.1`, then the second one would be invoked and replace `advertise_addr` and `start_join` in consul configuration file `/etc/consul/consul.json` to make the node join the consul cluster.
+`recipes/consul_template.rb` | Prepare two files: `prepare-consul-template.sh` and `generate-consul-template.rb`. The former one takes two arguments: 'IP address of consul client' (i.e. `192.168.1.10`) and 'IP address of consul server' (i.e. `192.168.1.1`, then the second one would be invoked and replace `advertise_addr` and `start_join` in consul configuration file `/etc/consul/consul.json` to make the node join the consul cluster.
 `recipes/nginx.rb` | Install [nginx](https://nginx.org/). Prepare virtual host and configuration file for [monit](https://mmonit.com/monit/).
 `recipes/ruby.rb` | Install [rbenv](https://github.com/rbenv/rbenv), Ruby, [ImageMagick](http://www.imagemagick.org/script/index.php), MySQL client library, and related libraries to run Ruby on Rails application.
 `recipes/nodejs.rb` | Install [nodejs](https://nodejs.org/en/), [bower](https://bower.io/), and [webpack](https://webpack.github.io/).
