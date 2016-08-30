@@ -55,13 +55,15 @@ template "#{deploy_to}/config/secrets.yml" do
   variables secret_key_base: secret_key_base
 end
 
-execute "assets_precompile" do
-  command "/opt/rbenv/shims/bundle exec rake assets:precompile"
-  creates "#{deploy_to}/public/assets"
-  cwd deploy_to
-  environment({ "RAILS_ENV" => rails_env })
-  group username
-  user username
+if node["pizza"]["compile_assets"]
+  execute "assets_precompile" do
+    command "/opt/rbenv/shims/bundle exec rake assets:precompile"
+    creates "#{deploy_to}/public/assets"
+    cwd deploy_to
+    environment({ "RAILS_ENV" => rails_env })
+    group username
+    user username
+  end
 end
 
 directory "#{deploy_to}/tmp/pids" do
