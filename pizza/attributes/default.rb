@@ -27,6 +27,7 @@ default["pizza"]["enable_ssl"] = false
 default["pizza"]["ruby"]["version"] = "2.3.0"
 default["pizza"]["unicorn_worker_count"] = 5
 default["pizza"]["username"] = "ubuntu"
+default["pizza"]["with_app"] = true
 
 # unused attributes
 
