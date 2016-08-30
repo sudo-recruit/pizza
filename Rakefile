@@ -15,4 +15,18 @@ task ami: [:berks] do
   sh "packer build -var-file=variables.local.json packer.json"
 end
 
+desc "Create image in CI"
+task ami_ci: [:berks] do
+  sh "packer build " +
+    "-var 'base_ami=$BASE_AMI' " +
+    "-var 'consul_key_dir=$CONSUL_KEY_DIR' " +
+    "-var 'database_url=$DATABASE_URL' " +
+    "-var 'deploy_to=$DEPLOY_TO' " +
+    "-var 'repository=$REPOSITORY' " +
+    "-var 'secret_key_base=$SECRET_KEY_BASE' " +
+    "-var 'security_group_id=$SECURITY_GROUP_ID' " +
+    "-var 'ssh_key=$SSH_KEY' " +
+    "-var 'username=$USERNAME'"
+end
+
 task default: :ami
