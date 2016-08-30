@@ -1,3 +1,7 @@
+# 2.0.3
+
+* add Packer configuration file to skip assets precompile
+
 # 2.0.2
 
 * fix bug: write consul configuration to `/etc/consul/consul.json`

@@ -41,6 +41,7 @@ Rake task | Description
 `rake berks` | Download dependency cookbooks with Berkshelf.
 `rake base_ami` | Create base image to accelerate building process.
 `rake ami` | Create AMI with application.
+`rake ami_ci` | Create AMI in CI service. It would come with application without assets. Variables would be injected with environment variables.
 
 ## License
 
