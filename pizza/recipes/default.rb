@@ -11,5 +11,5 @@ include_recipe "pizza::ssh"
 
 if node["pizza"]["with_app"]
   include_recipe "pizza::rails-app"
-  include_recipe "pizza::consul_template"
+  include_recipe "pizza::consul-template"
 end

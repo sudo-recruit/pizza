@@ -7,5 +7,6 @@
   "secret_key_base": "veryverysecretkey",
   "security_group_id": "sg-1a2b3c4d",
   "ssh_key": "DO_YOU_THINK_I_AM_THAT_STUPID_TO_PUT_SSH_KEY_HERE",
-  "username": "user"
+  "username": "user",
+  "with_app": true
 }
