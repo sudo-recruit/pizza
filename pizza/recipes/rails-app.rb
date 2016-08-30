@@ -71,6 +71,11 @@ directory "#{deploy_to}/tmp/pids" do
   user username
 end
 
+directory "#{deploy_to}/public/assets" do
+  group username
+  user username
+end
+
 app_name = ckattr("pizza.app_name", node["pizza"]["app_name"], String)
 deploy_to = ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
 unicorn_worker_count = ckattr("pizza.unicorn_worker_count", node["pizza"]["unicorn_worker_count"], Integer)
