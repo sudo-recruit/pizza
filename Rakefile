@@ -18,6 +18,7 @@ end
 desc "Build AMI image in CI"
 task ci: [:berks] do
   sh ["packer build",
+    "-var app_path=#{ENV["CI_APP_PATH"]}",
     "-var base_ami=#{ENV["BASE_AMI"]}",
     "-var consul_key_dir='#{ENV["CONSUL_KEY_DIR"]}'",
     "-var database_url='#{ENV["DATABASE_URL"]}'",

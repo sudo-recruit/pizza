@@ -20,7 +20,7 @@
     },
     {
       "destination": "{{ user `deploy_to` }}",
-      "source": "{{ user `ci_app_path` }}",
+      "source": "{{ user `app_path` }}",
       "type": "file"
     },
     {
