@@ -21,8 +21,6 @@ default["nodejs"]["version"] = "5.10.0"
 default["nodejs"]["binary"]["checksum"]["linux_x64"] = "a458ddab5f8d071c9b4f24ccfa685aedd57ccf7338c3ea0e2b99546cf35a3958"
 
 default["pizza"]["app_name"] = "app"
-default["pizza"]["compile_assets"] = true
-default["pizza"]["clone_via_git"] = true
 default["pizza"]["consul"]["node_name"] = "node1"
 default["pizza"]["deploy_to"] = "/home/ubuntu/app"
 default["pizza"]["enable_ssl"] = false
