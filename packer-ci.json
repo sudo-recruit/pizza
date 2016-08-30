@@ -32,7 +32,7 @@
           "username": "{{ user `username` }}"
         }
       },
-      "run_list": "pizza::default-without-app",
+      "run_list": "pizza::default",
       "type": "chef-solo"
     },
     {
