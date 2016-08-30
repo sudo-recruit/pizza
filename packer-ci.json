@@ -15,11 +15,17 @@
   ],
   "provisioners": [
     {
+      "destination": "{{ user `deploy_to` }}",
+      "source": "../",
+      "type": "file"
+    },
+    {
       "cookbook_paths": [
         "vendor"
       ],
       "json": {
         "pizza": {
+          "clone_via_git": false,
           "compile_assets": false,
           "consul": {
             "key_dir": "{{ user `consul_key_dir` }}"

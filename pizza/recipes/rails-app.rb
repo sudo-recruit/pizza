@@ -6,11 +6,13 @@ deploy_to = ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
 
 rails_env = "staging"
 
-git deploy_to do
-  action :sync
-  group username
-  repository repository
-  user username
+if node["pizza"]["clone_via_git"]
+  git deploy_to do
+    action :sync
+    group username
+    repository repository
+    user username
+  end
 end
 
 execute "bundle_install" do
