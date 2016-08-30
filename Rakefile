@@ -26,7 +26,7 @@ task ci: [:berks] do
     "-var secret_key_base='#{ENV["SECRET_KEY_BASE"]}'",
     "-var security_group_id='#{ENV["SECURITY_GROUP_ID"]}'",
     "-var ssh_key='#{ENV["SSH_KEY"]}'",
-    "-var username='#{ENV["USERNAME"]}'",
+    "-var username='#{ENV["CI_USERNAME"]}'",
     "-var with_app=false",
     "packer-ci.json"
   ].join(" ")
