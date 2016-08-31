@@ -36,15 +36,6 @@ execute "npm_install" do
   user username
 end
 
-execute "webpack_production" do
-  command "/usr/local/bin/webpack -p --config webpack.config.prod.js"
-  creates "#{deploy_to}/app/assets/javascripts/bundle/app-bundle.js"
-  environment({ "NODE_ENV" => "production" })
-  cwd deploy_to
-  group username
-  user username
-end
-
 database_url = ckattr("pizza.database_url", node["pizza"]["database_url"], String)
 template "#{deploy_to}/config/database.yml" do
   variables database_url: database_url
@@ -55,13 +46,24 @@ template "#{deploy_to}/config/secrets.yml" do
   variables secret_key_base: secret_key_base
 end
 
-execute "assets_precompile" do
-  command "/opt/rbenv/shims/bundle exec rake assets:precompile"
-  creates "#{deploy_to}/public/assets"
-  cwd deploy_to
-  environment({ "RAILS_ENV" => rails_env })
-  group username
-  user username
+if node["pizza"]["assets_precompile"]
+  execute "webpack_production" do
+    command "/usr/local/bin/webpack -p --config webpack.config.prod.js"
+    creates "#{deploy_to}/app/assets/javascripts/bundle/app-bundle.js"
+    environment({ "NODE_ENV" => "production" })
+    cwd deploy_to
+    group username
+    user username
+  end
+
+  execute "assets_precompile" do
+    command "/opt/rbenv/shims/bundle exec rake assets:precompile"
+    creates "#{deploy_to}/public/assets"
+    cwd deploy_to
+    environment({ "RAILS_ENV" => rails_env })
+    group username
+    user username
+  end
 end
 
 directory "#{deploy_to}/tmp/pids" do
