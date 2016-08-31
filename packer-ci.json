@@ -22,7 +22,7 @@
     },
     {
       "destination": "{{ user `deploy_to` }}/public/assets",
-      "source": "{{ user `rails_app_path` }}",
+      "source": "{{ user `rails_app_path` }}/public/assets/",
       "type": "file"
     },
     {
