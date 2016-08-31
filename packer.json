@@ -4,7 +4,7 @@
       "ami_description": "Built with Pizza project at {{ timestamp }}",
       "ami_name": "pizza-{{ timestamp }}",
       "associate_public_ip_address": true,
-      "instance_type": "c4.xlarge",
+      "instance_type": "m4.large",
       "region": "ap-northeast-1",
       "security_group_id": "{{ user `security_group_id` }}",
       "source_ami": "{{ user `base_ami` }}",
