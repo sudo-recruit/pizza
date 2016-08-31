@@ -10,7 +10,7 @@ directory "/home/#{username}/.ssh" do
 end
 
 file "/home/#{username}/.ssh/id_rsa" do
-  content ssh_key_content
+  content ssh_key_content.gsub("\\n", "\n")
   group username
   mode "0600"
   owner username
