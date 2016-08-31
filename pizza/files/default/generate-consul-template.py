@@ -6,7 +6,7 @@ CONSUL_JSON = "/etc/consul/consul.json"
 
 if len(sys.argv) < 2:
     print("usage: ruby gen-consul-template.rb [consul_machine_ip] [consul_server_ip]")
-    syst.exit(1)
+    sys.exit(1)
 
 with open(CONSUL_JSON) as f:
     consul_content = f.read()
