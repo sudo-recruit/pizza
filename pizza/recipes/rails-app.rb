@@ -68,9 +68,11 @@ if node["pizza"]["assets_precompile"]
   end
 end
 
-directory "#{deploy_to}/tmp/pids" do
-  group username
-  user username
+%W(#{deploy_to}/tmp #{deploy_to}/tmp/pids).each do |dir|
+  directory dir do
+    group username
+    user username
+  end
 end
 
 app_name = ckattr("pizza.app_name", node["pizza"]["app_name"], String)
