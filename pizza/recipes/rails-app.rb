@@ -20,20 +20,31 @@ execute "bundle_install" do
   user username
 end
 
-execute "bower_install" do
-  command "/usr/local/bin/bower install"
-  creates "#{deploy_to}/vendor/assets/components"
-  cwd deploy_to
-  group username
-  user username
-end
+if node["pizza"]["assets_precompile"]
+  execute "bower_install" do
+    command "/usr/local/bin/bower install"
+    creates "#{deploy_to}/vendor/assets/components"
+    cwd deploy_to
+    group username
+    user username
+  end
 
-execute "npm_install" do
-  command "/usr/local/bin/npm install"
-  creates "#{deploy_to}/node_modules"
-  cwd deploy_to
-  group username
-  user username
+  execute "npm_install" do
+    command "/usr/local/bin/npm install"
+    creates "#{deploy_to}/node_modules"
+    cwd deploy_to
+    group username
+    user username
+  end
+
+  execute "webpack_production" do
+    command "/usr/local/bin/webpack -p --config webpack.config.prod.js"
+    creates "#{deploy_to}/app/assets/javascripts/bundle/app-bundle.js"
+    environment({ "NODE_ENV" => "production" })
+    cwd deploy_to
+    group username
+    user username
+  end
 end
 
 database_url = ckattr("pizza.database_url", node["pizza"]["database_url"], String)
@@ -47,15 +58,6 @@ template "#{deploy_to}/config/secrets.yml" do
 end
 
 if node["pizza"]["assets_precompile"]
-  execute "webpack_production" do
-    command "/usr/local/bin/webpack -p --config webpack.config.prod.js"
-    creates "#{deploy_to}/app/assets/javascripts/bundle/app-bundle.js"
-    environment({ "NODE_ENV" => "production" })
-    cwd deploy_to
-    group username
-    user username
-  end
-
   execute "assets_precompile" do
     command "/opt/rbenv/shims/bundle exec rake assets:precompile"
     creates "#{deploy_to}/public/assets"
