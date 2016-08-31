@@ -19,8 +19,8 @@
         "vendor"
       ],
       "json": {
-        "assets_precompile": false,
         "pizza": {
+          "assets_precompile": false,
           "consul": {
             "key_dir": "{{ user `consul_key_dir` }}"
           },
