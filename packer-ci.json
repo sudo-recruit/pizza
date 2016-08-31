@@ -15,17 +15,6 @@
   ],
   "provisioners": [
     {
-      "inline": [
-        "mkdir -p {{ user `deploy_to` }}/public/assets"
-      ],
-      "type": "shell"
-    },
-    {
-      "destination": "{{ user `deploy_to` }}/public/assets",
-      "source": "{{ user `rails_app_path` }}/public/assets/",
-      "type": "file"
-    },
-    {
       "cookbook_paths": [
         "vendor"
       ],
@@ -46,6 +35,17 @@
       },
       "run_list": "pizza::default",
       "type": "chef-solo"
+    },
+    {
+      "inline": [
+        "mkdir -p {{ user `deploy_to` }}/public/assets"
+      ],
+      "type": "shell"
+    },
+    {
+      "destination": "{{ user `deploy_to` }}/public/assets",
+      "source": "{{ user `rails_app_path` }}/public/assets/",
+      "type": "file"
     }
   ]
 }
