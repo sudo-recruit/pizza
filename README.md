@@ -49,6 +49,8 @@ Rake task | Description
 `rake base_ami` | Create base image to accelerate building process.
 `rake ami` | Create AMI with application.
 
+All AMIs would be tagged with `pizza` in `CreatedBy` field.
+
 ## License
 
 MIT
