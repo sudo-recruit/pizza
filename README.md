@@ -11,6 +11,13 @@ For Pizza cookbook, please read [this file](pizza/README.md).
 * ruby 2.3.x
 * [packer](https://www.packer.io/) v0.10.x
 
+## Two versions of Packer configuration file
+
+File name | Description
+--- | ---
+`packer.json` | For generic use.
+`packer-ci.json` | For CI.
+
 ## Usage
 
 ### Install Dependencies
