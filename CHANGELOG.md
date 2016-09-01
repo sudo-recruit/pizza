@@ -1,3 +1,7 @@
+# 2.0.4
+
+* attach tags on AMIs
+
 # 2.0.3
 
 * support CI via `packer-ci.json`

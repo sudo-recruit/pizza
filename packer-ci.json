@@ -10,6 +10,9 @@
       "source_ami": "{{ user `base_ami` }}",
       "spot_price": "0.5",
       "ssh_username": "ubuntu",
+      "tags": {
+        "CreatedBy": "pizza"
+      },
       "type": "amazon-ebs"
     }
   ],
