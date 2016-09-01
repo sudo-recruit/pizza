@@ -1,3 +1,7 @@
+# 2.0.3
+
+* support CI via `packer-ci.json`
+
 # 2.0.2
 
 * fix bug: write consul configuration to `/etc/consul/consul.json`
@@ -9,6 +13,7 @@
 # 2.0.0
 
 * add configuration file for Packer to make AMI
+* refactor project structure
 
 # 1.1.1
 
