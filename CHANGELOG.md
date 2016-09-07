@@ -1,3 +1,7 @@
+# 2.0.5
+
+* use `consul_template_config` resource to manage consul templates
+
 # 2.0.4
 
 * attach tags on AMIs
