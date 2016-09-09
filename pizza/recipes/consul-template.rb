@@ -4,16 +4,14 @@ username = ckattr("pizza.username", node["pizza"]["username"], String)
 
 root = "root"
 
-include_recipe "consul-template::default"
+include_recipe "consul_template::default"
 
 ckattr("pizza.consul.key_dir", node["pizza"]["consul"]["key_dir"], String)
-consul_template_config "application_yaml" do
-  templates [{
-    source: "#{deploy_to}/config/application.ctmpl",
-    destination: "#{deploy_to}/config/application.yml",
-    command: "service unicorn_#{app_name} restart"
-  }]
-  notifies :reload, 'service[consul-template]', :delayed
+consul_template "application_yaml.json" do
+  source "application.ctmpl.erb"
+  destination "#{deploy_to}/config/application.yml"
+  command "service unicorn_#{app_name} restart"
+  notifies :restart, 'consul_template_service[consul-template]', :delayed
 end
 
 ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)

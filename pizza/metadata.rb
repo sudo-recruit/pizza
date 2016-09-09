@@ -9,7 +9,7 @@ long_description File.read(File.join(File.dirname(__FILE__), "..", "README.md"))
 
 depends "apt"
 depends "consul"
-depends "consul-template"
+depends "consul_template"
 depends "nginx", "~> 2.7.6"
 depends "nodejs"
 depends "poise-monit"
