@@ -22,7 +22,7 @@ template "/usr/local/bin/prepare-consul-template.sh" do
   variables deploy_to: deploy_to
 end
 
-cookbook_file "/usr/local/bin/generate-consul-template.py" do
+cookbook_file "/usr/local/bin/setup-consul.py" do
   group root
   mode "0755"
   owner root

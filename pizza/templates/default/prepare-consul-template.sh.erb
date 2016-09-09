@@ -2,7 +2,8 @@
 
 set -e # reference: http://unix.stackexchange.com/q/15998
 
-GENERATE_CONSUL_TEMPLATE_SCRIPT="/usr/local/bin/generate-consul-template.py"
+DELAY=5
+SETUP_CONSUL="/usr/local/bin/setup-consul.py"
 SERVICE=$(which service)
 
 if [ "$EUID" -ne 0 ]; then
@@ -10,6 +11,8 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-$GENERATE_CONSUL_TEMPLATE_SCRIPT $1 $2
+$SETUP_CONSUL $1 $2
 
 $SERVICE consul restart
+sleep $DELAY
+$SERVICE consul-template restart
