@@ -9,28 +9,28 @@
 #
 
 <match rails.access>
- type copy
- <store>
-  type elasticsearch
-  logstash_format true
-  logstash_dateformat %Y.%m.
-  host <%= node['pita']['elasticsearch_host'] %>
-  index_name rails
-  type_name rails.access
-</store>
-<store>
-  type s3
-  s3_bucket <%= node['pita']['s3_bucket'] %>
-  s3_region <%= node['pita']['s3_region'] %>
-  path rails-logs/
-  buffer_path /var/log/td-agent/s3-buffer/rails
+  type copy
+  <store>
+    type elasticsearch
+    logstash_format true
+    logstash_dateformat %Y.%m.
+    host <%= node["pizza"]["elasticsearch_host"] %>
+    index_name rails
+    type_name rails.access
+  </store>
+  # <store>
+  #   type s3
+  #   s3_bucket <%= node["pizza"]["s3_bucket"] %>
+  #   s3_region <%= node["pizza"]["s3_region"] %>
+  #   path rails-logs/
+  #   buffer_path /var/log/td-agent/s3-buffer/rails
 
-  time_slice_format %Y%m%d%H
-  time_slice_wait 10m
-  utc
+  #   time_slice_format %Y%m%d%H
+  #   time_slice_wait 10m
+  #   utc
 
-  buffer_chunk_limit 256m
-</store>
+  #   buffer_chunk_limit 256m
+  # </store>
 </match>
 
 
@@ -39,9 +39,16 @@
 ##
 <source>
   type tail
-  path /home/<%= node['pita']['user_name'] %>/apps/<%= node['pita']['rails_app_name'] %>/shared/log/production.log
+  path <%= node["pizza"]["deploy_to"] %>/log/production.log
   pos_file /var/log/td-agent/rails.access.log.pos
   tag rails.access
   format json
 </source>
 
+<source>
+  type tail
+  path <%= node["pizza"]["deploy_to"] %>/log/staging.log
+  pos_file /var/log/td-agent/rails.access.log.pos
+  tag rails.access
+  format json
+</source>

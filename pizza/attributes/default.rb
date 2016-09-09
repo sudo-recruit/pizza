@@ -23,14 +23,13 @@ default["nodejs"]["binary"]["checksum"]["linux_x64"] = "a458ddab5f8d071c9b4f24cc
 default["pizza"]["app_name"] = "app"
 default["pizza"]["assets_precompile"] = true
 default["pizza"]["consul"]["node_name"] = "node1"
+default["pizza"]["elasticsearch_host"] = "127.0.0.1"
 default["pizza"]["deploy_to"] = "/home/ubuntu/app"
 default["pizza"]["enable_ssl"] = false
 default["pizza"]["ruby"]["version"] = "2.3.0"
 default["pizza"]["unicorn_worker_count"] = 5
 default["pizza"]["username"] = "ubuntu"
 default["pizza"]["with_app"] = true
-
-# unused attributes
 
 default["td_agent"]["api_key"] = "foo_bar"
 default["td_agent"]["plugins"] = %w(elasticsearch s3)
