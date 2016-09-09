@@ -33,7 +33,7 @@
           "secret_key_base": "{{ user `secret_key_base` }}",
           "ssh_key": "{{ user `ssh_key` }}",
           "username": "{{ user `username` }}",
-          "with_app": true
+          "with_app": "true"
         }
       },
       "run_list": "pizza::default",
