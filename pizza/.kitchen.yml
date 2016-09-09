@@ -21,6 +21,7 @@ suites:
           key_dir: "some/secret/key/value/pairs"
         database_url: "adapter://user:password@host:3306/database"
         deploy_to: /home/user/application
+        elasticsearch_host: "127.0.0.1"
         repository: "git@github.com:user/repo.git"
         secret_key_base: veryverysecretkey
         ssh_key: "DO_YOU_THINK_I_AM_THAT_STUPID_TO_PUT_SSH_KEY_HERE"
