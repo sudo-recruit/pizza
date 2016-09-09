@@ -1,5 +1,5 @@
 name "pizza"
-version "2.0.5"
+version "2.0.6"
 maintainer "henry40408"
 maintainer_email "henry.wu@sudo.com.tw"
 license  "MIT"
