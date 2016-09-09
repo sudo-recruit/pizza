@@ -6,6 +6,17 @@ root = "root"
 
 include_recipe "consul_template::default"
 
+directory "#{deploy_to}/config" do
+  group "consul-template"
+  owner "consul-template"
+end
+
+file "#{deploy_to}/config/application.yml" do
+  content ""
+  group "consul-template"
+  owner "consul-template"
+end
+
 ckattr("pizza.consul.key_dir", node["pizza"]["consul"]["key_dir"], String)
 consul_template "application_yaml.json" do
   source "application.ctmpl.erb"
