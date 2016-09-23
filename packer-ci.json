@@ -11,6 +11,7 @@
       "spot_price": "0.5",
       "ssh_username": "ubuntu",
       "tags": {
+        "BuildNumber": "{{ user `build_number` }}",
         "CreatedBy": "pizza"
       },
       "type": "amazon-ebs"
