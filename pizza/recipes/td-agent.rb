@@ -1,3 +1,4 @@
+app_name = ckattr("pizza.app_name", node["pizza"]["app_name"], String)
 deploy_to = ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
 username = ckattr("pizza.username", node["pizza"]["username"], String)
 
@@ -27,16 +28,16 @@ end
   end
 end
 
-template "/etc/td-agent/conf.d/td-agent_rails.conf" do
-  group root
-  mode "0704"
-  owner root
-  source "td-agent_rails.conf.erb"
+consul_template "td_agent_rails.json" do
+  source "td-agent_rails.ctmpl.erb"
+  destination "/etc/td-agent/conf.d/td-agent_rails.conf"
+  command "service unicorn_#{app_name} restart"
+  notifies :restart, 'consul_template_service[consul-template]', :delayed
 end
 
-template "/etc/td-agent/conf.d/td-agent_nginx.conf" do
-  group root
-  mode "0704"
-  owner root
-  source "td-agent_nginx.conf.erb"
+consul_template "td_agent_nginx.json" do
+  source "td-agent_nginx.ctmpl.erb"
+  destination "/etc/td-agent/conf.d/td-agent_nginx.conf"
+  command "service unicorn_#{app_name} restart"
+  notifies :restart, 'consul_template_service[consul-template]', :delayed
 end
