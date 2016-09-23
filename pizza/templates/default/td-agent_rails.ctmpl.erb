@@ -14,7 +14,7 @@
     type elasticsearch
     logstash_format true
     logstash_dateformat %Y.%m.
-    host <%= node["pizza"]["elasticsearch_host"] %>
+    host {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/ELASTICSEARCH_HOST" }}
     index_name rails
     type_name rails.access
   </store>
