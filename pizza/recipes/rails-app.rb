@@ -91,3 +91,10 @@ template "/etc/init.d/unicorn_#{app_name}" do
   source "unicorn_init.erb"
   variables deploy_to: deploy_to, rails_env: rails_env, username: username
 end
+
+include_recipe "poise-monit"
+
+monit_config "unicorn" do
+  source "monit_unicorn.conf.erb"
+  variables deploy_to: deploy_to, unicorn_worker_count: 4
+end
