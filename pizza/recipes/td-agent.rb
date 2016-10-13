@@ -16,8 +16,15 @@ end
 include_recipe "td-agent::default"
 
 directory "/etc/td-agent/conf.d" do
-  group root
-  user root
+  group 'td-agent'
+  user 'td-agent'
+  mode '0775'
+end
+
+group 'td-agent' do
+  action :modify
+  members "consul-template"
+  append true
 end
 
 %w(production.log staging.log).each do |filename|
