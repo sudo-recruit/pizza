@@ -28,6 +28,12 @@
           "consul": {
             "key_dir": "{{ user `consul_key_dir` }}"
           },
+           "consul_template": {
+            "td_agent_elastic_host": "{{ user `td_agent_elastic_host` }}",
+            "td_agent_s3_bucket": "{{ user `td_agent_s3_bucket` }}",
+            "td_agent_s3_region": "{{ user `td_agent_s3_region` }}",
+            "td_agent_rails_log": "{{ user `td_agent_rails_log` }}"
+          },
           "database_url": "{{ user `database_url` }}",
           "deploy_to": "{{ user `deploy_to` }}",
           "elasticsearch_host": "{{ user `elasticsearch_host` }}",
