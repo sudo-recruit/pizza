@@ -16,17 +16,24 @@ end
 include_recipe "td-agent::default"
 
 directory "/etc/td-agent/conf.d" do
-  group root
-  user root
+  group 'td-agent'
+  user 'td-agent'
+  mode '0775'
 end
 
-%w(production.log staging.log).each do |filename|
-  file "#{deploy_to}/log/#{filename}" do
-    owner username
-    group username
-    content ""
-  end
+group 'td-agent' do
+  action :modify
+  members "consul-template"
+  append true
 end
+
+# %w(production.log staging.log).each do |filename|
+#   file "#{deploy_to}/log/#{filename}" do
+#     owner username
+#     group username
+#     content ""
+#   end
+# end
 
 consul_template "td_agent_rails.json" do
   source "td-agent_rails.ctmpl.erb"

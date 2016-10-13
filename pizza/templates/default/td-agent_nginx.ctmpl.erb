@@ -14,23 +14,25 @@
     type elasticsearch
     logstash_format true
     logstash_dateformat %Y.%m.
-    host {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/ELASTICSEARCH_HOST" }}
+    host {{ key "<%= node["pizza"]["consul_template"]["td_agent_elastic_host"] %>" }}
     index_name nginx
     type_name nginx.access
   </store>
-  # <store>
-  #   type s3
-  #   s3_bucket <%= node["pizza"]["s3_bucket"] %>
-  #   s3_region <%= node["pizza"]["s3_region"] %>
-  #   path nginx-logs/
-  #   buffer_path /var/log/td-agent/s3-buffer/nginx
+ {{if key "<%= node["pizza"]["consul_template"]["td_agent_s3_bucket"] %>"}}
+  <store>
+    type s3
+    s3_bucket {{ key "<%= node["pizza"]["consul_template"]["td_agent_s3_bucket"] %>" }}
+    s3_region {{ key "<%= node["pizza"]["consul_template"]["td_agent_s3_region"] %>" }}
+    path nginx-logs/
+    buffer_path /var/log/td-agent/s3-buffer/nginx
 
-  #   time_slice_format %Y%m%d%H
-  #   time_slice_wait 10m
-  #   utc
+    time_slice_format %Y%m%d%H
+    time_slice_wait 10m
+    utc
 
-  #   buffer_chunk_limit 256m
-  # </store>
+    buffer_chunk_limit 256m
+  </store>
+  {{end}}
 </match>
 
 ####

@@ -103,6 +103,10 @@ Attribute | Type | Description
 --- | --- | ---
 `node["pizza"]["app_name"]` | `string` | Human-readable name of application, i.e. `app`.
 `node["pizza"]["consul"]["node_name"]` | `string` | consul node name, i.e. `app_node1`.
+`node["pizza"]["consul_template"]["td_agent_elastic_host"]` | `string` | consul key for td-agent elasticsearch host, i.e. `service/td-agent/rails_app1/es_host`.
+`node["pizza"]["consul_template"]["td_agent_s3_bucket"]` | `string` | consul key for td-agent s3 bucket, i.e. `service/td-agent/rails_app1/s3_bucket`.
+`node["pizza"]["consul_template"]["td_agent_s3_region"]` | `string` | consul key for td-agent s3 region, i.e. `service/td-agent/rails_app1/s3_region`.
+`node["pizza"]["consul_template"]["td_agent_rails_log"]` | `string` | consul key for td-agent rails log, i.e. `service/td-agent/rails_app1/rails_log`.
 `node["pizza"]["deploy_to"]` | `string` | Destination directory which the application is deployed.
 `node["pizza"]["enable_ssl"]` | `boolean` | Whether enable SSL or not. Usually `false` for `staging` environment.
 `node["pizza"]["ruby"]["version"]` | `string` | Version of Ruby used by the application, i.e. `2.3.0`.
