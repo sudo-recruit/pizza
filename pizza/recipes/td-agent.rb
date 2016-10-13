@@ -27,13 +27,13 @@ group 'td-agent' do
   append true
 end
 
-# %w(production.log staging.log).each do |filename|
-#   file "#{deploy_to}/log/#{filename}" do
-#     owner username
-#     group username
-#     content ""
-#   end
-# end
+%w(production.log staging.log).each do |filename|
+  file "#{deploy_to}/log/#{filename}" do
+    owner username
+    group username
+    content ""
+  end
+end
 
 consul_template "td_agent_rails.json" do
   source "td-agent_rails.ctmpl.erb"
