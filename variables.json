@@ -1,6 +1,10 @@
 {
   "base_ami": "ami-a21529cc",
   "consul_key_dir": "some/secret/key/value/pairs",
+  "td_agent_elastic_host": "service/td-agent/my_rails_app/es_host",
+  "td_agent_s3_bucket": "service/td-agent/my_rails_app/s3_bucket",
+  "td_agent_s3_region": "service/td-agent/my_rails_app/s3_region",
+  "td_agent_rails_log": "service/td-agent/my_rails_app/rails_log",
   "database_url": "adapter://user:password@host:3306/database",
   "deploy_to": "/home/user/application",
   "repository": "git@github.com:user/repo.git",
