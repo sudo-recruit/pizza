@@ -11,6 +11,12 @@ directory "#{deploy_to}/config" do
   owner "consul-template"
 end
 
+group 'root' do
+  action :modify
+  members "consul-template"
+  append true
+end
+
 file "#{deploy_to}/config/application.yml" do
   content ""
   group "consul-template"

@@ -1,3 +1,7 @@
+# 2.0.7
+
+* adjust `unicorn_init` permission to make consul-template can restart it.
+
 # 2.0.6
 
 * use `consul-template` service to generate `application.yml`

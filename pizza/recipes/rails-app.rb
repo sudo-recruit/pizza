@@ -86,7 +86,7 @@ deploy_to = ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
 username = ckattr("pizza.username", node["pizza"]["username"], String)
 template "/etc/init.d/unicorn_#{app_name}" do
   group "root"
-  mode "0755"
+  mode "0775"
   owner "root"
   source "unicorn_init.erb"
   variables deploy_to: deploy_to, rails_env: rails_env, username: username
