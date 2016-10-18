@@ -98,3 +98,8 @@ monit_config "unicorn" do
   source "monit_unicorn.conf.erb"
   variables deploy_to: deploy_to, unicorn_worker_count: 4
 end
+
+monit_config "sidekiq" do
+  source "monit_sidekiq.conf.erb"
+  variables deploy_to: deploy_to
+end
