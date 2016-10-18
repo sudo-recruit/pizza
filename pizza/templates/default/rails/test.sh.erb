@@ -1,0 +1,6 @@
+#!/bin/bash
+ 
+rails_env=$(cat /home/ubuntu/rails_env)
+
+/bin/date >> /home/<%= @deploy_to %>/test_log
+echo $rails_env >> /home/<%= @deploy_to %>/test_log

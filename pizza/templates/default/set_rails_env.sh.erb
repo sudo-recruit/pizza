@@ -5,3 +5,4 @@ FILE="/etc/profile.d/rails_env.sh"
 /bin/cat <<EOM >$FILE
 export RAILS_ENV='$1'
 EOM
+echo $1 > /home/ubuntu/rails_env
