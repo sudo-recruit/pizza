@@ -3,6 +3,13 @@ include_recipe "unattended_upgrades"
 
 package "git"
 
+# setting rails env variable 
+template "/usr/local/bin/set_rails_env.sh" do
+  group 'root'
+  mode "0755"
+  owner 'root'
+end
+
 include_recipe "pizza::consul"
 include_recipe "pizza::nginx"
 include_recipe "pizza::ruby"

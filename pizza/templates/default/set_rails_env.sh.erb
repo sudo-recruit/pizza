@@ -1,0 +1,7 @@
+#!/bin/bash
+
+FILE="/etc/profile.d/rails_env.sh"
+
+/bin/cat <<EOM >$FILE
+export RAILS_ENV='$1'
+EOM

@@ -1,3 +1,7 @@
+# 2.0.9
+
+* add set_rails_env.sh to set rails environment
+
 # 2.0.8
 
 * add sidekiq.
