@@ -5,6 +5,7 @@ set -e
 APP_ROOT="<%= @deploy_to %>"
 AS_USER="<%= @username %>"
 TIMEOUT=${TIMEOUT-60}
+RAILS_ENV=$(cat /home/ubuntu/rails_env) 
 
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c <%= "#{@deploy_to}/config/unicorn.rb" %> -E $RAILS_ENV"
 PID_DIR=$APP_ROOT/tmp/pids
