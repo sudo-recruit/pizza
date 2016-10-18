@@ -89,7 +89,7 @@ template "/etc/init.d/unicorn_#{app_name}" do
   mode "0775"
   owner "root"
   source "unicorn_init.erb"
-  variables deploy_to: deploy_to, rails_env: rails_env, username: username
+  variables deploy_to: deploy_to, username: username
 end
 
 include_recipe "poise-monit"
