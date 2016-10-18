@@ -1,3 +1,7 @@
+# 2.0.8
+
+* add sidekiq.
+
 # 2.0.7
 
 * adjust `unicorn_init` permission to make consul-template can restart it.
