@@ -18,17 +18,17 @@ consul_watch 'db-migrate' do
   notifies :reload, 'consul_service[consul]', :delayed
 end
 
-for test
-template "/home/#{username}/test.sh" do
-  source 'rails/test.sh.erb'
-  group consul_user
-  mode "0755"
-  owner consul_user
-  variables deploy_to: deploy_to
-end
+# for test
+# template "/home/#{username}/test.sh" do
+#   source 'rails/test.sh.erb'
+#   group consul_user
+#   mode "0755"
+#   owner consul_user
+#   variables deploy_to: deploy_to
+# end
 
-consul_watch 'foo-test' do
-  type 'event'
-  parameters(handler: "/home/#{username}/test.sh",name:'foo-test')
-  notifies :reload, 'consul_service[consul]', :delayed
-end
+# consul_watch 'foo-test' do
+#   type 'event'
+#   parameters(handler: "/home/#{username}/test.sh",name:'foo-test')
+#   notifies :reload, 'consul_service[consul]', :delayed
+# end
