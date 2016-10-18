@@ -1,0 +1,3 @@
+#!/bin/bash
+ 
+cd <%= @deploy_to %> && ( RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 RAILS_ENV=$RAILS_ENV RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 /opt/rbenv/bin/rbenv exec bundle exec rake db:migrate )
