@@ -92,7 +92,7 @@ template "/etc/init.d/unicorn_#{app_name}" do
   variables deploy_to: deploy_to, username: username
 end
 
-include_recipe "poise-monit"
+include_recipe "pizza::monit"
 
 monit_config "unicorn" do
   source "monit_unicorn.conf.erb"

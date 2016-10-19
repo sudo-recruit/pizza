@@ -22,7 +22,7 @@ template "/etc/nginx/sites-enabled/#{app_name}" do
   source "nginx.conf.erb"
 end
 
-include_recipe "poise-monit"
+include_recipe "pizza::monit"
 
 monit_config "nginx" do
   source "monit_nginx.conf.erb"
