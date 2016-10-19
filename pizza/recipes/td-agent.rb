@@ -38,13 +38,13 @@ end
 consul_template "td_agent_rails.json" do
   source "td-agent_rails.ctmpl.erb"
   destination "/etc/td-agent/conf.d/td-agent_rails.conf"
-  command "service unicorn_#{app_name} restart"
+  command "service td-agent restart"
   notifies :restart, 'consul_template_service[consul-template]', :delayed
 end
 
 consul_template "td_agent_nginx.json" do
   source "td-agent_nginx.ctmpl.erb"
   destination "/etc/td-agent/conf.d/td-agent_nginx.conf"
-  command "service unicorn_#{app_name} restart"
+  command "service td-agent restart"
   notifies :restart, 'consul_template_service[consul-template]', :delayed
 end
