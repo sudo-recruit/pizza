@@ -7,20 +7,20 @@ root = "root"
 include_recipe "consul_template::default"
 
 directory "#{deploy_to}/config" do
-  group "consul-template"
-  owner "consul-template"
+  group root
+  owner root
 end
 
-group 'root' do
-  action :modify
-  members "consul-template"
-  append true
-end
+# group 'root' do
+#   action :modify
+#   members "consul-template"
+#   append true
+# end
 
 file "#{deploy_to}/config/application.yml" do
   content ""
-  group "consul-template"
-  owner "consul-template"
+  group root
+  owner root
 end
 
 ckattr("pizza.consul.key_dir", node["pizza"]["consul"]["key_dir"], String)

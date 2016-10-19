@@ -23,7 +23,7 @@ end
 
 group 'td-agent' do
   action :modify
-  members "consul-template"
+  members root
   append true
 end
 
