@@ -1,3 +1,7 @@
+# 2.0.11
+
+* set consul-template default user and group as root.
+
 # 2.0.10
 
 * use consul event to run db migrate

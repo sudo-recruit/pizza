@@ -5,6 +5,9 @@ default["apt"]["unattended_upgrades"]["enable"] = true
 default["consul"]["config"]["start_join"] = %w(192.168.33.11) # IP address of host machine from Vagrant
 default["consul"]["version"] = "0.5.2"
 
+default["consul_template"]["service"]["user"] = "root"
+default["consul_template"]["service"]["group"] = "root"
+
 default["monit"]["allow"] = %w(localhost admin:monit 0.0.0.0/0.0.0.0)
 
 default["nginx"]["source"]["checksum"] = "b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
