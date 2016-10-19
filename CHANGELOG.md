@@ -1,3 +1,8 @@
+# 2.0.12
+* fix td-agent restart service
+* fix db_migrate.sh variable error
+* add tails-tasks to default recipes
+
 # 2.0.11
 
 * set consul-template default user and group as root.
