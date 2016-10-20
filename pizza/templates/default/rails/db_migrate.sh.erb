@@ -1,7 +1,24 @@
 #!/bin/bash
-rails_env=$(cat /home/ubuntu/rails_env)
-current_user=$(id -un)
+rails_env=$(cat /home/<%= @username %>/rails_env)
+dadatata_url=$(cat /home/<%= @username %>/config/dadatata_url)
+dadatata_token=$(cat /home/<%= @username %>/config/dadatata_token)
 
-echo $current_user > /home/ubuntu/migrate.log
-cd /home/ubuntu/app
-( RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 RAILS_ENV=$rails_env RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 /opt/rbenv/bin/rbenv exec bundle exec rake db:migrate ) >> /home/ubuntu/migrate.log 2>&1
+current_user=$(id -un)
+echo $current_user > /home/<%= @username %>/migrate.log
+cd /home/<%= @username %>/app
+( RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 RAILS_ENV=$rails_env RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 /opt/rbenv/bin/rbenv exec bundle exec rake db:migrate ) >> /home/<%= @username %>/migrate.log 2>&1
+
+
+txt=''
+while read -r line
+do
+  txt="${txt}\n${line}"
+done < "/home/<%= @username %>/migrate.log"
+
+txt="${txt}\n${line}"
+txt=$(echo $txt | tr '"' '`')
+
+curl -X "POST" "$dadatata_url" \
+     -H "x-sudo-token: $dadatata_token" \
+     -H "Content-Type: text/plain; charset=utf-8" \
+     -d "{\"task\":{\"log\":\"$txt\"}}"

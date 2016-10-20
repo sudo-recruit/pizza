@@ -18,6 +18,28 @@ consul_watch 'db-migrate' do
   notifies :reload, 'consul_service[consul]', :delayed
 end
 
+file "/home/#{username}/migrate.log" do
+  owner username
+  group username
+  content ""
+  mode '0666'
+end
+
+directory "/home/#{username}/config" do
+  group username
+  user username
+  mode '0766'
+end
+
+include_recipe "consul_template::default"
+%w(dadatata_url dadatata_token).each do |filename|
+  consul_template "#{filename}.json" do
+    content "{{ key \"service/rails_sudo/next/#{filename}\" }}"
+    destination "/home/#{username}/config/#{filename}"
+    notifies :restart, 'consul_template_service[consul-template]', :delayed
+  end
+end
+
 # for test
 # template "/home/#{username}/test.sh" do
 #   source 'rails/test.sh.erb'
