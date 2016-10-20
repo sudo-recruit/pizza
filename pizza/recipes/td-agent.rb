@@ -32,6 +32,7 @@ end
     owner username
     group username
     content ""
+    mode '0664'
   end
 end
 

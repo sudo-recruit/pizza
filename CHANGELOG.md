@@ -1,3 +1,9 @@
+## Unreleased
+### Changed
+* update db_migrate.sh
+* update rails log file mode
+* add user `consul`  to group `ubuntu`
+
 # 2.0.12
 * fix td-agent restart service
 * fix db_migrate.sh variable error

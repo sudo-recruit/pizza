@@ -1,4 +1,5 @@
 app_name = ckattr("pizza.app_name", node["pizza"]["app_name"], String)
+username = ckattr("pizza.username", node["pizza"]["username"], String)
 
 include_recipe "consul::default"
 
@@ -15,3 +16,9 @@ consul_definition "rails_alive" do
 end
 
 include_recipe "sudo_consul_service::required_reboot"
+
+group username do
+  action :modify
+  members 'consul'
+  append true
+end

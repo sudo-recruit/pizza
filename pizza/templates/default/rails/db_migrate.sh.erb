@@ -1,3 +1,7 @@
 #!/bin/bash
-rails_env=$(cat /home/<%= @username %>/rails_env) 
-cd <%= @deploy_to %> && ( RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 RAILS_ENV=$RAILS_ENV RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 /opt/rbenv/bin/rbenv exec bundle exec rake db:migrate )
+rails_env=$(cat /home/ubuntu/rails_env)
+current_user=$(id -un)
+
+echo $current_user > /home/ubuntu/migrate.log
+cd /home/ubuntu/app
+( RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 RAILS_ENV=$rails_env RBENV_ROOT=/opt/rbenv RBENV_VERSION=2.3.0 /opt/rbenv/bin/rbenv exec bundle exec rake db:migrate ) >> /home/ubuntu/migrate.log 2>&1
