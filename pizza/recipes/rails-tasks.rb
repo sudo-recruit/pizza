@@ -28,7 +28,7 @@ end
 directory "/home/#{username}/config" do
   group username
   user username
-  mode '0766'
+  mode '0750'
 end
 
 include_recipe "consul_template::default"

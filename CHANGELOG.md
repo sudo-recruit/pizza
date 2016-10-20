@@ -1,5 +1,8 @@
 ## Unreleased
 
+# 2.0.14
+* update `config` file mode
+
 # 2.0.13
 * update db_migrate.sh
 * update rails log file mode
