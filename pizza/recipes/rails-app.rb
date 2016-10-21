@@ -52,10 +52,11 @@ template "#{deploy_to}/config/database.yml" do
   variables database_url: database_url
 end
 
-secret_key_base = ckattr("pizza.secret_key_base", node["pizza"]["secret_key_base"], String)
-template "#{deploy_to}/config/secrets.yml" do
-  variables secret_key_base: secret_key_base
-end
+# use env
+# secret_key_base = ckattr("pizza.secret_key_base", node["pizza"]["secret_key_base"], String)
+# template "#{deploy_to}/config/secrets.yml" do
+#   variables secret_key_base: secret_key_base
+# end
 
 if node["pizza"]["assets_precompile"]
   execute "assets_precompile" do
