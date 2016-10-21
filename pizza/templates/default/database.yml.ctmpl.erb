@@ -1,0 +1,24 @@
+staging:
+  adapter: mysql2
+  timeout: 5000
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  database: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_NAME" }}
+  pool: 5
+  username: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_USERNAME" }}
+  password: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_PASSWORD" }}
+  host: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_HOST" }}
+  port: 3306
+
+production:
+  adapter: mysql2
+  timeout: 5000
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  database: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_NAME" }}
+  pool: 5
+  username: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_USERNAME" }}
+  password: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_PASSWORD" }}
+  host: {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/DATABASE_HOST" }}
+  port: 3306
+

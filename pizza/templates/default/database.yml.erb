@@ -25,11 +25,11 @@ staging:
   timeout: 5000
   encoding: utf8mb4
   collation: utf8mb4_bin
-  database: <%= ENV['DATABASE_NAME'] %>
+  database: <%= @deploy_to %>
   pool: 5
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= @deploy_to %>
+  password: <%= @deploy_to %>
+  host: <%= @deploy_to %>
   port: 3306
 
 production:
@@ -37,10 +37,10 @@ production:
   timeout: 5000
   encoding: utf8mb4
   collation: utf8mb4_bin
-  database: <%= ENV['DATABASE_NAME'] %>
+  database: <%= @deploy_to %>
   pool: 5
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= @deploy_to %>
+  password: <%= @deploy_to %>
+  host: <%= @deploy_to %>
   port: 3306
 

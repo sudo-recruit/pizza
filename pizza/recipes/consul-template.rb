@@ -31,6 +31,13 @@ consul_template "application_yaml.json" do
   notifies :restart, 'consul_template_service[consul-template]', :delayed
 end
 
+consul_template "db.json" do
+  source "database.yml.ctmpl.erb"
+  destination "#{deploy_to}/config/database.yml"
+  command "service unicorn_#{app_name} restart"
+  notifies :restart, 'consul_template_service[consul-template]', :delayed
+end
+
 ckattr("pizza.deploy_to", node["pizza"]["deploy_to"], String)
 template "/usr/local/bin/prepare-consul-template.sh" do
   group root
