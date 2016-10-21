@@ -21,4 +21,26 @@ test:
   database: db/test.sqlite3
 
 staging:
-  url: <%= @database_url %>
+  adapter: mysql2
+  timeout: 5000
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  database: <%= ENV['DATABASE_NAME'] %>
+  pool: 5
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  port: 3306
+
+production:
+  adapter: mysql2
+  timeout: 5000
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  database: <%= ENV['DATABASE_NAME'] %>
+  pool: 5
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  port: 3306
+
