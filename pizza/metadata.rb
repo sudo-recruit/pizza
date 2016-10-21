@@ -18,3 +18,4 @@ depends "ssh_known_hosts"
 depends "sudo_consul_service"
 depends "td-agent"
 depends "unattended_upgrades"
+depends 'golang', '~> 1.7.0'

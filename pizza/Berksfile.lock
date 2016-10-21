@@ -71,6 +71,7 @@ GRAPH
     apt (>= 0.0.0)
     consul (>= 0.0.0)
     consul_template (>= 0.0.0)
+    golang (~> 1.7.0)
     nginx (~> 2.7.6)
     nodejs (>= 0.0.0)
     poise-monit (>= 0.0.0)

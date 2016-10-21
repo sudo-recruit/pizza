@@ -3,6 +3,13 @@ username = ckattr("pizza.username", node["pizza"]["username"], String)
 consul_user = 'consul'
 include_recipe "consul::default"
 
+# install sifter
+# Helps to prevent Consul from firing prematurely.
+include_recipe "golang::default"
+node.default['go']['packages'] = [ "github.com/darron/sifter"]
+include_recipe "golang::packages"
+
+
 # db migrate
 template "/home/#{username}/db_migrate.sh" do
   source 'rails/db_migrate.sh.erb'
@@ -14,7 +21,7 @@ end
 
 consul_watch 'db-migrate' do
   type 'event'
-  parameters(handler: "/home/#{username}/db_migrate.sh",name:'db-migrate')
+  parameters(handler: "/opt/go/bin/sifter run -e  '/home/#{username}/db_migrate.sh'",name:'db-migrate')
   notifies :reload, 'consul_service[consul]', :delayed
 end
 

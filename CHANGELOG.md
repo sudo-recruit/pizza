@@ -1,4 +1,6 @@
 ## Unreleased
+#2.0.15
+* use sifter to prevent Consul from firing prematurely
 
 # 2.0.14
 * update `config` file mode
