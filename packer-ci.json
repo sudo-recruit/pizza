@@ -42,6 +42,9 @@
           "ssh_key": "{{ user `ssh_key` }}",
           "username": "{{ user `username` }}",
           "with_app": "true"
+        },
+        "newrelic": {
+          "license": "{{ user `new_relic_license` }}"
         }
       },
       "run_list": "pizza::default",
