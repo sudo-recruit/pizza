@@ -19,3 +19,4 @@ depends "sudo_consul_service"
 depends "td-agent"
 depends "unattended_upgrades"
 depends 'golang', '~> 1.7.0'
+depends 'newrelic', '~> 2.22.3'

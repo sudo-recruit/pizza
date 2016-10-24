@@ -1,4 +1,6 @@
 ## Unreleased
+* add newrelic recipes.
+
 #2.0.15
 * use sifter to prevent Consul from firing prematurely
 

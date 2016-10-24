@@ -21,4 +21,5 @@ if node["pizza"]["with_app"] == "true"
   include_recipe "pizza::rails-tasks"
   include_recipe "pizza::consul-template"
   include_recipe "pizza::td-agent"
+  include_recipe "pizza::newrelic"
 end
