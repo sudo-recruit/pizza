@@ -10,6 +10,8 @@ default["consul_template"]["service"]["group"] = "root"
 
 default["monit"]["allow"] = %w(localhost admin:monit 0.0.0.0/0.0.0.0)
 
+default["newrelic"]["license"] = "this_is_fake_new_license"
+
 default["nginx"]["source"]["checksum"] = "b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
 default["nginx"]["source"]["modules"] = %w(
   nginx::http_ssl_module
