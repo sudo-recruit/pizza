@@ -1,5 +1,8 @@
 ## Unreleased
 
+#2.0.18
+* add update sitemap task.
+
 #2.0.17
 * use cmtpl for nginx.conf
 

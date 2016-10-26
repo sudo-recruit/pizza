@@ -25,6 +25,21 @@ consul_watch 'db-migrate' do
   notifies :reload, 'consul_service[consul]', :delayed
 end
 
+# update sitemap
+template "/home/#{username}/update_sitemap.sh" do
+  source 'rails/update_sitemap.sh.erb'
+  group consul_user
+  mode "0755"
+  owner consul_user
+  variables deploy_to: deploy_to, username: username
+end
+
+consul_watch 'update-sitemap' do
+  type 'event'
+  parameters(handler: "/opt/go/bin/sifter run -e  '/home/#{username}/update_sitemap.sh'",name:'update-sitemap')
+  notifies :reload, 'consul_service[consul]', :delayed
+end
+
 file "/home/#{username}/migrate.log" do
   owner username
   group username
