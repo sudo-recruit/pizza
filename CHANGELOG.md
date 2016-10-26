@@ -1,4 +1,7 @@
 ## Unreleased
+
+#2.0.16
+* update nginx config, add_header Access-Control-Allow-Origin *;
 * add newrelic recipes.
 
 #2.0.15
