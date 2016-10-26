@@ -27,3 +27,11 @@ include_recipe "pizza::monit"
 monit_config "nginx" do
   source "monit_nginx.conf.erb"
 end
+
+include_recipe "consul_template::default"
+consul_template "nginx_app.json" do
+  source "nginx.conf.ctmpl.erb"
+  destination "/etc/nginx/sites-enabled/#{app_name}"
+  command "service nginx restart"
+  notifies :restart, 'consul_template_service[consul-template]', :delayed
+end

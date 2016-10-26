@@ -1,0 +1,113 @@
+upstream unicorn {
+  server unix:/tmp/unicorn.<%= node["pizza"]["app_name"] %>.sock fail_timeout=0;
+}
+
+server {
+  listen 80 default deferred;
+  root <%= node["pizza"]["deploy_to"] %>/public;
+
+  location ~*\.php {
+    return 404;
+  }
+
+  location ~*\.jsp {
+    return 404;
+  }
+
+  location ~*\.sh {
+    return 404;
+  }
+
+  location ~*\.action {
+    return 404;
+  }
+
+  location ^~ /cgi- {
+    return 404;
+  }
+
+  location ~*\.cgi {
+    return 404;
+  }
+
+  location /manager/html {
+    return 404;
+  }
+
+  location /clientaccesspolicy.xml {
+    return 404;
+  }
+
+  {{if key "<%= node["pizza"]["consul"]["key_dir"] %>/SITEMAP_URL" }}
+  location /sitemap.xml {
+  set $s3_bucket        '{{ key "<%= node["pizza"]["consul"]["key_dir"] %>/SITEMAP_S3_BUCKET" }}';
+
+  proxy_http_version     1.1;
+  proxy_set_header       Host $s3_bucket;
+  proxy_set_header       Authorization '';
+  proxy_hide_header      x-amz-id-2;
+  proxy_hide_header      x-amz-request-id;
+  proxy_hide_header      Set-Cookie;
+  proxy_ignore_headers   "Set-Cookie";
+  proxy_buffering        off;
+  proxy_intercept_errors on;
+
+  resolver               8.8.8.8 valid=300s;
+  resolver_timeout       10s;
+
+  proxy_pass             {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/SITEMAP_URL" }};
+  }
+  {{end}}
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+    add_header Access-Control-Allow-Origin {{ key "<%= node["pizza"]["consul"]["key_dir"] %>/HOST" }};
+  }
+
+  try_files $uri/index.html $uri @unicorn;
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+
+  client_max_body_size 4G;
+  error_page 500 502 503 504 /500.html;
+  keepalive_timeout 10;
+}
+
+<% if node["pizza"]["enable_ssl"] %>
+server {
+  listen 443 default deferred;
+  root <%= node["pizza"]["deploy_to"] %>/public;
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  try_files $uri/index.html $uri @unicorn;
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Proto https;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+
+  client_max_body_size 4G;
+  error_page 500 502 503 504 /500.html;
+  keepalive_timeout 10;
+
+  ssl on;
+  ssl_certificate <%= node["pizza"]["ssl_cert"] %>;
+  ssl_certificate_key <%= node["pizza"]["ssl_key"] %>;
+  ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+  ssl_prefer_server_ciphers on;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+}
+<% end %>  

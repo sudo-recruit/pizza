@@ -1,5 +1,8 @@
 ## Unreleased
 
+#2.0.17
+* use cmtpl for nginx.conf
+
 #2.0.16
 * update nginx config, add_header Access-Control-Allow-Origin *;
 * add newrelic recipes.
